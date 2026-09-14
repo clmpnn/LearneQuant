@@ -2,67 +2,52 @@
 
 # 📈 LearneQuant
 
-### *Quantitative finance, taught the same way LearneJP teaches Japanese — stage by stage.*
+### A free, browser-based quantitative finance study companion
 
-[![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
-[![Made with JavaScript](https://img.shields.io/badge/Made%20with-JavaScript-f7df1e?style=for-the-badge&logo=javascript&logoColor=black)](https://github.com/clmpnn/LearneQuant)
-[![Status](https://img.shields.io/badge/Status-Active-2ea44f?style=for-the-badge)](https://github.com/clmpnn/LearneQuant)
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen?style=for-the-badge&logo=googlechrome&logoColor=white)](https://clmpnn.github.io/LearneQuant/)
+[![GitHub Pages](https://img.shields.io/badge/hosted%20on-GitHub%20Pages-222?style=for-the-badge&logo=github)](https://pages.github.com/)
+[![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)](LICENSE)
 
-<img width="720" alt="LearneQuant banner" src="https://via.placeholder.com/720x260/0f1b2e/2ecc71?text=LearneQuant">
+[**🌐 Try LearneQuant →**](https://clmpnn.github.io/LearneQuant/)
 
 </div>
 
 ---
 
-## ✨ Overview
+## 📖 About
 
-**LearneQuant** brings the "Learne" series' guided-lesson-plus-drill format to quantitative finance: work through structured stages covering core concepts — statistics, probability, time series, and trading/portfolio math — then test yourself with practice questions on each one.
+**LearneQuant** follows the same idea as [LearneJP](https://github.com/clmpnn/LearneJP) and [LearneCN](https://github.com/clmpnn/LearneCN): a free, staged, no-signup app for learning a hard subject — this time quantitative finance — through structured lessons and practice questions, in your browser.
 
-> 💡 *Note: this README is a starter template built from the repo name and the design pattern shared with LearneJP/LearneCN — swap in the real curriculum, screenshots, and stack below once confirmed against the codebase.*
+> ✏️ *Note: fill in your actual staged curriculum and quiz topics below — this section is a starting template based on the "Learne" series format.*
 
-## 🧩 Suggested Features
+## ✨ Features
 
-| Feature | Description |
-|---|---|
-| 📚 **Guided Curriculum** | Staged lessons from foundational statistics up through applied quant concepts |
-| 🧮 **Concept Drills** | Practice questions after each lesson to check and reinforce understanding |
-| 🔁 **Spaced Review** | Missed or self-rated-weak concepts resurface for review over time |
-| 📊 **Reference Sheets** | Quick-lookup formulas and definitions (e.g., Sharpe ratio, volatility, regression basics) |
-| ➕ **Add Content** | Contribute your own practice questions and lessons |
+- 🗺️ Staged learning path from fundamentals to advanced quant topics
+- 📝 Practice quizzes on core concepts (e.g. probability, statistics, pricing models, portfolio theory)
+- 🧠 Spaced repetition or progress tracking to reinforce what you've learned
+- ➕ Add-your-own-content support, matching the LearneJP / LearneCN pattern
 
-## 🚀 Getting Started
+## 🚀 Live Demo
+
+👉 **[clmpnn.github.io/LearneQuant](https://clmpnn.github.io/LearneQuant/)**
+
+## 🛠️ Getting Started
 
 ```bash
 git clone [https://github.com/clmpnn/LearneQuant.git](https://github.com/clmpnn/LearneQuant.git)
 cd LearneQuant
+# open index.html directly, or serve locally:
+python -m http.server 8000
 ```
 
-Open the entry HTML file directly in a browser if it follows the static-site pattern of its sibling apps, or run:
-
-```bash
-# adjust to match the project's actual entry point
-npm install
-npm start
-```
-
-## 🛠️ Tech Stack
-
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
-
-## 🤝 Contributing
-
-Add lessons, fix an explanation, or contribute new practice questions via a pull request.
+To publish your own fork: enable **Settings → Pages → Deploy from `main`, folder `/`**.
 
 ## 📄 License
 
-Released under the [MIT License](LICENSE).
+Released under the MIT License.
 
 ---
 
 <div align="center">
-
-*Part of the "Learne" series — sibling apps: LearneJP · LearneCN · LearneKR*
-
+Made with ❤️ for anyone learning quant finance, one lesson at a time.
 </div>
