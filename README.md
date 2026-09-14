@@ -8,56 +8,6 @@ It is a static site with no build step, no framework and no dependencies. Open
 `index.html` and it runs.
 
 ---
-
-## Publishing it
-
-**First, run the setup script once.** Right-click `setup.ps1` and choose *Run
-with PowerShell* (or `bash setup.sh` from Git Bash). It writes
-`.github/workflows/deploy.yml`, initialises the git repository and makes the
-first commit. Those two things had to be left to a script: the tool that wrote
-this folder is not allowed to create a `.git` directory or a GitHub Actions
-workflow, which is the right rule to have. Running it twice is harmless.
-
-Then:
-
-1. Create an empty repository on GitHub called `LearneQuant`.
-2. From this folder:
-
-   ```bash
-   git remote add origin https://github.com/YOUR-USERNAME/LearneQuant.git
-   git push -u origin main
-   ```
-
-3. In the repository, go to **Settings → Pages** and set **Source** to
-   **GitHub Actions**.
-
-That is all. The workflow in `.github/workflows/deploy.yml` takes over from
-there and the site appears at
-`https://YOUR-USERNAME.github.io/LearneQuant/` within a couple of minutes.
-
-The workflow stamps the real public URL into the social tags, sitemap and
-`robots.txt` at deploy time, so nothing here has a hostname hard-coded into
-it. It also refuses to publish if `.nojekyll` has gone missing, if any
-JavaScript file fails to parse, or if `index.html` points at an asset that
-is not in the repository.
-
-### A custom domain
-
-Put the bare hostname in a file called `CNAME` at the root
-(`quant.example.com`, one line, no protocol), push, and set the same domain
-under **Settings → Pages**. Everything on the site is referenced by relative
-path, so it works at a domain root and under `/LearneQuant/` without changes.
-
-### Deploying from a branch instead
-
-If you switch **Source** to *Deploy from a branch*, the site still works —
-that is why `.nojekyll` is committed and why the service worker revalidates
-in the background rather than trusting a build id. You lose the pre-publish
-checks and the URL stamping; the social preview tags will read
-`__SITE_URL__` until the workflow runs.
-
----
-
 ## What is in here
 
 ```
