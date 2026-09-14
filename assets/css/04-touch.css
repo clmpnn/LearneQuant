@@ -48,8 +48,7 @@
   #burger,
   #themeBtn,
   #theme,
-  #qr-root .btn-icon,
-  #tr-root .btn-icon {
+  #qr-root .btn-icon {
     min-width: 44px;
     min-height: 44px;
   }
@@ -63,7 +62,8 @@
   .qcr-seg button,
   .qcr-x,
   #qr-root input#q,
-  #qr-root .search input,
+  #qr-root .sb-search input,
+  #qr-root .gl-search,
   #qc-bar button,
   .qc-btn,
   .qc-opt,
@@ -156,10 +156,12 @@
      than handing the gesture to the page behind it — or, at the top of the
      document, to the browser's pull-to-refresh.
      ------------------------------------------------------------------ */
+  /* The panels are .qc-panel, not .panel — the first version of this rule
+     named a class that does not exist in this document and therefore did
+     nothing at all. Found by matching every selector in this file against the
+     live DOM across all three views and several deeper states. */
   .sidebar,
-  #qr-root .panel,
-  #tr-root .panel,
-  .qc-sheet {
+  .qc-panel {
     overscroll-behavior: contain;
   }
 
@@ -171,13 +173,58 @@
      were running past the right edge.
      ------------------------------------------------------------------ */
   #qr-root pre,
-  #qr-root .mathd,
-  #tr-root pre {
+  #qr-root .mathd {
     max-width: 100%;
     overflow-x: auto;
     overscroll-behavior-x: contain;
     -webkit-overflow-scrolling: touch;
   }
+}
+
+/* ==========================================================================
+   SIDEWAYS-SCROLLING REGIONS
+
+   assets/js/05-scroll-a11y.js marks a region .qc-scrollx once it is actually
+   wider than its box, and .qc-scrollx-end once the reader has scrolled to the
+   far side. This draws the cue.
+
+   An inset shadow is used rather than a background gradient because an inset
+   shadow paints against the padding box, which does not move when the content
+   scrolls — so the hint stays pinned to the edge. Checked first that it will
+   be visible: none of the 400 table rows and cells sampled carries a
+   background colour of its own that would paint over it.
+
+   This is not inside the (pointer: coarse) block. A narrow desktop window
+   clips these regions exactly the same way, and the keyboard access the
+   script adds matters most where there is a keyboard.
+   ========================================================================== */
+.qc-scrollx {
+  box-shadow: inset -14px 0 12px -12px rgba(20, 18, 14, .22);
+  transition: box-shadow .18s ease;
+  scroll-behavior: smooth;
+}
+.qc-scrollx.qc-scrollx-end { box-shadow: none; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .qc-scrollx {
+    box-shadow: inset -14px 0 12px -12px rgba(0, 0, 0, .55);
+  }
+}
+:root[data-theme="dark"] .qc-scrollx {
+  box-shadow: inset -14px 0 12px -12px rgba(0, 0, 0, .55);
+}
+:root[data-theme="dark"] .qc-scrollx.qc-scrollx-end,
+:root:not([data-theme="light"]) .qc-scrollx.qc-scrollx-end { box-shadow: none; }
+
+/* A focusable region needs a visible focus ring, and the document's own
+   :focus-visible styling does not reach these because they are not controls. */
+.qc-scrollx:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qc-scrollx { transition: none; scroll-behavior: auto; }
 }
 
 /* ==========================================================================

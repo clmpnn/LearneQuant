@@ -80,6 +80,7 @@ assets/js/                 the runtime, split by what it does
   32-course.js             the ordered course
   33-lessons.js            lesson layer
   40-interface.js          route interface, lessons, iOS fixes, downloads
+  05-scroll-a11y.js        makes sideways-scrolling regions keyboard-usable
   90-trainer.js            the practice engine — loaded on demand
 tools/inline-css.py        pushes assets/css into index.html
 setup.ps1 / setup.sh       one-time: writes the workflow, inits the repo
@@ -191,9 +192,27 @@ screen — a real horizontal wobble, found by diffing `scrollWidth` against the
 viewport. Height is free where width is not, so those anchors are 32×44. Every
 device profile now reports `scrollWidth === clientWidth` in all three views.
 
-The whole layer lives in `assets/css/04-touch.css`, entirely inside
-`@media (pointer: coarse)`. A mouse-driven browser matches none of it, and the
-desktop pixel diff is still zero.
+**Scrollable regions are reachable from a keyboard, and say that they scroll.**
+Making 283 regions scroll solved reading them with a thumb and did nothing for
+anyone using a keyboard: none was focusable, so the hidden columns stayed
+hidden (WCAG 2.1.1). `assets/js/05-scroll-a11y.js` gives each one `tabindex`
+and a name once it is actually wider than its box — lazily, through an
+`IntersectionObserver`, so it never forces the `content-visibility` content
+into layout. Measured: every region is marked by the time a reader reaches it,
+234 of 234, none missed. The same marking drives an inset edge shadow that
+fades once you reach the far side, which is the affordance the first pass
+lacked.
+
+An audit of the touch layer against the live DOM — every selector, in all
+three views and several deeper states — found two rules that had been matching
+nothing: the panels are `.qc-panel`, not `.panel`, and the reference search
+field sits in `.sb-search`, not `.search`. Both are fixed; three selectors that
+can never match anything in this document were removed.
+
+The touch rules live in `assets/css/04-touch.css` inside
+`@media (pointer: coarse)`; the scroll cue sits outside it, because a narrow
+desktop window clips a table exactly the same way. The desktop pixel diff is
+still zero — at full width nothing overflows, so no cue is drawn.
 
 ---
 

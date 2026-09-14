@@ -17,7 +17,7 @@
                   straight from a branch with no build step to bump VERSION.
    ========================================================================== */
 const VERSION = "__BUILD_ID__";
-const FALLBACK_VERSION = "86396af7773d";
+const FALLBACK_VERSION = "57f0ec26ee4d";
 const TAG = "quant-" + (VERSION.indexOf("__") === 0 ? FALLBACK_VERSION : VERSION);
 const SHELL_CACHE = TAG + "-shell";
 const RUNTIME     = TAG + "-runtime";
@@ -28,6 +28,7 @@ const SHELL = [
   "index.html",
   "manifest.webmanifest",
   "assets/js/00-trainer-loader.js",
+  "assets/js/05-scroll-a11y.js",
   "assets/js/10-dialog.js",
   "assets/js/20-search-index.js",
   "assets/js/21-reference.js",
