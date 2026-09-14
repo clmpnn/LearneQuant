@@ -8,12 +8,66 @@ It is a static site with no build step, no framework and no dependencies. Open
 `index.html` and it runs.
 
 ---
+
+## Publishing it
+
+**First, run the setup script once.** Right-click `setup.ps1` and choose *Run
+with PowerShell* (or `bash setup.sh` from Git Bash). It writes
+`.github/workflows/deploy.yml`, initialises the git repository and makes the
+first commit. Those two things had to be left to a script: the tool that wrote
+this folder is not allowed to create a `.git` directory or a GitHub Actions
+workflow, which is the right rule to have. Running it twice is harmless.
+
+Then:
+
+1. Create an empty repository on GitHub called `LearneQuant`.
+2. From this folder:
+
+   ```bash
+   git remote add origin https://github.com/YOUR-USERNAME/LearneQuant.git
+   git push -u origin main
+   ```
+
+3. In the repository, go to **Settings → Pages** and set **Source** to
+   **GitHub Actions**.
+
+That is all. The workflow in `.github/workflows/deploy.yml` takes over from
+there and the site appears at
+`https://YOUR-USERNAME.github.io/LearneQuant/` within a couple of minutes.
+
+The workflow stamps the real public URL into the social tags, sitemap and
+`robots.txt` at deploy time, so nothing here has a hostname hard-coded into
+it. It also refuses to publish if `.nojekyll` has gone missing, if any
+JavaScript file fails to parse, or if `index.html` points at an asset that
+is not in the repository.
+
+### A custom domain
+
+Put the bare hostname in a file called `CNAME` at the root
+(`quant.example.com`, one line, no protocol), push, and set the same domain
+under **Settings → Pages**. Everything on the site is referenced by relative
+path, so it works at a domain root and under `/LearneQuant/` without changes.
+
+### Deploying from a branch instead
+
+If you switch **Source** to *Deploy from a branch*, the site still works —
+that is why `.nojekyll` is committed and why the service worker revalidates
+in the background rather than trusting a build id. You lose the pre-publish
+checks and the URL stamping; the social preview tags will read
+`__SITE_URL__` until the workflow runs.
+
+---
+
 ## What is in here
 
 ```
 index.html                 the course: 5.6 MB of pre-rendered content
                            plus the inlined stylesheets
 assets/css/                the editable source for those stylesheets
+  01-core.css              type, colour, layout
+  02-layers.css            iOS/safe-area, lesson units, refinements
+  03-route.css             the course view
+  04-touch.css             phone-only fixes, all behind (pointer: coarse)
 assets/js/                 the runtime, split by what it does
   00-trainer-loader.js     defers the practice engine off the critical path
   10-dialog.js             the ask-and-tell dialog layer
@@ -97,6 +151,49 @@ still correct when served from a branch with no build step).
 
 GitHub Pages gzips everything on the way out, which takes the whole site from
 8.9 MB to roughly 2.2 MB on the wire.
+
+---
+
+## On phones
+
+The document arrived with a good deal of phone work already in it — safe-area
+insets on the floating chrome, 16px form fields so iOS does not zoom when one
+takes focus, `:hover` styling neutralised under `(hover: none)`,
+`content-visibility` with measured intrinsic sizes on all 53 volumes and 368
+lessons. An audit across eight device profiles, 320 px to 768 px, portrait and
+landscape, found three things it had missed.
+
+**212 tables, 89 of them wider than the screen.** Some reached 1002 px on a
+393 px phone. Because the page itself does not scroll sideways, those columns
+were not awkward — they were *unreachable*: clipped, with no gesture that
+brought them back. Each table is now its own horizontal scroll container. That
+is done in CSS rather than by wrapping them in JavaScript, because wrapping 212
+tables would force every one into layout and undo the `content-visibility`
+work. All 89 are now readable; none still clips.
+
+**Touch targets that were tall but not wide.** The existing rules set
+`min-height: 44px` and no `min-width`, so the contents button and the theme
+toggle came out 44 px tall and 27 px across — and width is the axis a thumb
+actually misses. Those, the trainer's digit buttons and the route chips now
+meet 44×44 everywhere. Where a control is deliberately small — the section
+checks, the `¶` heading anchors — the *hit area* grew instead, through a
+pseudo-element that paints nothing, so nothing moved on screen.
+
+**Tap latency and stray gestures.** `touch-action: manipulation` on controls
+drops the double-tap-to-zoom wait, while leaving pinch-zoom working on the page
+itself. Tables, code blocks and the sidebar contain their own overscroll, so
+swiping to the end of one no longer hands the gesture to the page behind it or
+triggers pull-to-refresh mid-lesson.
+
+One measurement worth keeping: a 44 px-wide hit target centred on an inline `¶`
+overhangs the right margin and pushed the whole document 2 px wider than the
+screen — a real horizontal wobble, found by diffing `scrollWidth` against the
+viewport. Height is free where width is not, so those anchors are 32×44. Every
+device profile now reports `scrollWidth === clientWidth` in all three views.
+
+The whole layer lives in `assets/css/04-touch.css`, entirely inside
+`@media (pointer: coarse)`. A mouse-driven browser matches none of it, and the
+desktop pixel diff is still zero.
 
 ---
 

@@ -1,0 +1,193 @@
+/* ==========================================================================
+   TOUCH LAYER
+
+   The document already carries a considerable amount of phone work: safe-area
+   insets on the floating chrome, 16px form fields so iOS does not zoom on
+   focus, neutralised :hover styling under (hover: none), content-visibility
+   with measured intrinsic sizes on all 53 volumes and 368 lessons. None of
+   that is repeated here.
+
+   What follows is only what an audit on eight device profiles — 320 px
+   through 768 px, portrait and landscape — found still missing. Every rule
+   sits inside (pointer: coarse), so a mouse-driven browser matches none of
+   it and the desktop rendering is untouched.
+   ========================================================================== */
+
+@media (pointer: coarse) {
+
+  /* ------------------------------------------------------------------
+     1. WIDE TABLES
+
+     89 of the 212 tables in the reference are wider than a 393 px screen —
+     some reach 1002 px. The page itself does not scroll sideways, so those
+     columns were not merely awkward to read, they were unreachable: the
+     text was clipped and no gesture brought it back.
+
+     Making the table its own scroll container fixes that without a wrapper
+     element, which matters because wrapping 212 tables in JavaScript would
+     undo the content-visibility work by forcing all of them into layout.
+     `display: block` keeps the rows rendering as table rows — they generate
+     an anonymous table box inside — while letting the element scroll.
+     ------------------------------------------------------------------ */
+  #qr-root table,
+  #tr-root table {
+    display: block;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;   /* swiping a table must not page back */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* ------------------------------------------------------------------
+     2. ICON BUTTONS
+
+     The existing coarse-pointer block sets min-height: 44px but no
+     min-width, so the icon buttons ended up 44 px tall and 27 px wide —
+     the contents button and the theme toggle among them. Width is the axis
+     a thumb actually misses on.
+     ------------------------------------------------------------------ */
+  #burger,
+  #themeBtn,
+  #theme,
+  #qr-root .btn-icon,
+  #tr-root .btn-icon {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* ------------------------------------------------------------------
+     3. THE REMAINING SHORT CONTROLS
+
+     Segmented route chips came in at 34.8 px tall, the reference search
+     field at 37, the disclosure buttons at 20. All below the 44 px floor.
+     ------------------------------------------------------------------ */
+  .qcr-seg button,
+  .qcr-x,
+  #qr-root input#q,
+  #qr-root .search input,
+  #qc-bar button,
+  .qc-btn,
+  .qc-opt,
+  .qc-stage-b {
+    min-height: 44px;
+  }
+
+  /* The trainer's own controls set a height but never a width, so the digit
+     buttons — 10 / 25 / 50 — and the gear came out around 32-38 px across. */
+  #tr-root .btn,
+  #tr-root .chip,
+  #tr-root select.btn {
+    min-width: 44px;
+  }
+
+  /* ------------------------------------------------------------------
+     4. HIT AREAS THAT MUST NOT CHANGE SIZE
+
+     The section-check boxes and the ¶ heading anchors are deliberately
+     small — 32 px — and making them larger would push the headings around.
+     The document already grows their hit area with a centred pseudo-element;
+     it stopped at 24 px. Raising it to 44 costs nothing visually, because
+     the pseudo-element paints nothing.
+     ------------------------------------------------------------------ */
+  #qr-root .sec-check,
+  #qr-root .anchor,
+  #qr-root .gl {
+    position: relative;
+  }
+  #tr-root .btn.sm::after,
+  #tr-root .btn.ghost::after,
+  #tr-root .chip::after,
+  #tr-root .logo button::after,
+  #qr-root .sec-check::after,
+  #qr-root .anchor::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: max(100%, 44px);
+    height: max(100%, 44px);
+    transform: translate(-50%, -50%);
+    /* purely a target: no paint, and it must not eat scrolls */
+    pointer-events: auto;
+  }
+
+  /* The ¶ anchors sit inline at the end of a heading, so a 44 px-wide target
+     centred on one overhangs the right margin — measured: it pushed the whole
+     document 2 px wider than the screen and gave the page a horizontal wobble.
+     Height is free, width is not: 32 x 44 is the largest target that costs
+     nothing. The section checks are block-level with room either side and keep
+     the full 44. */
+  #qr-root .anchor::after {
+    width: max(100%, 32px);
+  }
+
+  /* ------------------------------------------------------------------
+     5. TAP BEHAVIOUR
+
+     touch-action: manipulation drops the double-tap-to-zoom wait on
+     controls, so a tap registers immediately rather than after the browser
+     has finished deciding it was not the first half of a zoom gesture. It
+     is set only on controls, so pinch-zoom on the page — which some readers
+     need — keeps working everywhere else.
+     ------------------------------------------------------------------ */
+  button,
+  [role="button"],
+  .qc-btn,
+  .qc-opt,
+  #qr-root .nav-item,
+  #tr-root .chip,
+  #tr-root .opt {
+    touch-action: manipulation;
+  }
+
+  /* A long press on a control should offer the control, not a text selection. */
+  #qc-bar button,
+  #qr-root .btn,
+  #tr-root .btn,
+  #tr-root .chip {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+  }
+
+  /* ------------------------------------------------------------------
+     6. SCROLL CONTAINMENT
+
+     Reaching the end of the sidebar or a panel should stop there, rather
+     than handing the gesture to the page behind it — or, at the top of the
+     document, to the browser's pull-to-refresh.
+     ------------------------------------------------------------------ */
+  .sidebar,
+  #qr-root .panel,
+  #tr-root .panel,
+  .qc-sheet {
+    overscroll-behavior: contain;
+  }
+
+  /* ------------------------------------------------------------------
+     7. CODE AND MATHEMATICS
+
+     Both can be far wider than a phone. They should scroll on their own
+     rather than being cut off, and the display maths blocks in particular
+     were running past the right edge.
+     ------------------------------------------------------------------ */
+  #qr-root pre,
+  #qr-root .mathd,
+  #tr-root pre {
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ==========================================================================
+   VERY NARROW SCREENS
+
+   Below 360 px — an iPhone SE, or any phone with the display zoom turned up
+   — a couple of things need a little more room than the general phone layout
+   gives them.
+   ========================================================================== */
+@media (max-width: 359px) {
+  #qc-bar button { padding: 6px 8px; }
+  #qc-bar { gap: 2px; }
+}

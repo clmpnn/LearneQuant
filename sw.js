@@ -17,7 +17,7 @@
                   straight from a branch with no build step to bump VERSION.
    ========================================================================== */
 const VERSION = "__BUILD_ID__";
-const FALLBACK_VERSION = "d65ce1aec5a4";
+const FALLBACK_VERSION = "86396af7773d";
 const TAG = "quant-" + (VERSION.indexOf("__") === 0 ? FALLBACK_VERSION : VERSION);
 const SHELL_CACHE = TAG + "-shell";
 const RUNTIME     = TAG + "-runtime";

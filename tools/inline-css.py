@@ -16,7 +16,8 @@ import sys
 import pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-CSS = ["assets/css/01-core.css", "assets/css/02-layers.css", "assets/css/03-route.css"]
+CSS = ["assets/css/01-core.css", "assets/css/02-layers.css", "assets/css/03-route.css",
+       "assets/css/04-touch.css"]
 BEGIN = "<!-- css:begin — generated from assets/css by tools/inline-css.py; do not edit here -->"
 END = "<!-- css:end -->"
 
