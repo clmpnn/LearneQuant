@@ -1,0 +1,24 @@
+# Normalise line endings on the way in, leave them native on the way out.
+* text=auto eol=lf
+
+*.html  text diff=html
+*.css   text diff=css
+*.js    text
+*.json  text
+*.md    text
+*.svg   text
+*.webmanifest text
+*.yml   text
+
+*.png   binary
+*.ico   binary
+*.woff  binary
+*.woff2 binary
+
+# GitHub's language stats should describe the course, not the vendored
+# runtime that ships with it.
+assets/js/90-trainer.js      linguist-generated=true
+assets/js/20-search-index.js linguist-generated=true
+assets/js/22-reference-data.js linguist-generated=true
+assets/js/30-spine.js        linguist-generated=true
+index.html                   linguist-documentation=true

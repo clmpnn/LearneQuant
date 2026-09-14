@@ -1,0 +1,5 @@
+# The Quant Curriculum
+User-agent: *
+Allow: /
+
+Sitemap: __SITE_URL__sitemap.xml

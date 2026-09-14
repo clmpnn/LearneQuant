@@ -1,0 +1,41 @@
+# ---------------------------------------------------------------------------
+# Source material — deliberately not in this repository.
+#
+# "24 Quant Books.md" is 27 MB of extracted body text from textbooks that are
+# still in copyright (Hull, López de Prado, Hilpisch and others). It was
+# reading material for building the course; it is not the course, and
+# publishing it would be straightforward infringement. Keep it out.
+# ---------------------------------------------------------------------------
+*.md.bak
+24 Quant Books.md
+**/24 Quant Books.md
+_sources/
+_books/
+*.epub
+*.mobi
+*.djvu
+
+# The pre-split original, kept locally for reference
+The-Quant-Curriculum.html
+
+# Transport for the unmarked images; setup.ps1 unpacks and deletes it
+icons-original.zip
+
+# Tooling and editors
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.swp
+*~
+
+# Local servers and build scratch
+.cache/
+dist/
+tmp/
+*.log

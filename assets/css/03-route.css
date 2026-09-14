@@ -1,0 +1,365 @@
+/* source blocks [84, 85] */
+@supports (content-visibility: auto){#qr-root article.lesson{content-visibility:auto}#les-1{contain-intrinsic-size:auto 2859px}#les-2{contain-intrinsic-size:auto 1783px}#les-3{contain-intrinsic-size:auto 2236px}#les-4{contain-intrinsic-size:auto 3175px}#les-5{contain-intrinsic-size:auto 3603px}#les-6{contain-intrinsic-size:auto 4257px}#les-7{contain-intrinsic-size:auto 2247px}#les-8{contain-intrinsic-size:auto 2355px}#les-9{contain-intrinsic-size:auto 2432px}#les-10{contain-intrinsic-size:auto 5099px}#les-11{contain-intrinsic-size:auto 1643px}#les-12{contain-intrinsic-size:auto 7181px}#les-13{contain-intrinsic-size:auto 5299px}#les-14{contain-intrinsic-size:auto 2568px}#les-15{contain-intrinsic-size:auto 3937px}#les-16{contain-intrinsic-size:auto 3247px}#les-17{contain-intrinsic-size:auto 2202px}#les-18{contain-intrinsic-size:auto 3487px}#les-19{contain-intrinsic-size:auto 2340px}#les-20{contain-intrinsic-size:auto 820px}#les-21{contain-intrinsic-size:auto 707px}#les-22{contain-intrinsic-size:auto 3427px}#les-23{contain-intrinsic-size:auto 23286px}#les-24{contain-intrinsic-size:auto 927px}#les-25{contain-intrinsic-size:auto 1623px}#les-26{contain-intrinsic-size:auto 2749px}#les-27{contain-intrinsic-size:auto 2230px}#les-28{contain-intrinsic-size:auto 1399px}#les-29{contain-intrinsic-size:auto 1883px}#les-30{contain-intrinsic-size:auto 2397px}#les-31{contain-intrinsic-size:auto 2387px}#les-32{contain-intrinsic-size:auto 2886px}#les-33{contain-intrinsic-size:auto 2683px}#les-34{contain-intrinsic-size:auto 2409px}#les-35{contain-intrinsic-size:auto 2438px}#les-36{contain-intrinsic-size:auto 2005px}#les-37{contain-intrinsic-size:auto 2276px}#les-38{contain-intrinsic-size:auto 2009px}#les-39{contain-intrinsic-size:auto 2166px}#les-40{contain-intrinsic-size:auto 2496px}#les-41{contain-intrinsic-size:auto 3275px}#les-42{contain-intrinsic-size:auto 3009px}#les-43{contain-intrinsic-size:auto 2975px}#les-44{contain-intrinsic-size:auto 4512px}#les-45{contain-intrinsic-size:auto 2274px}#les-46{contain-intrinsic-size:auto 4534px}#les-47{contain-intrinsic-size:auto 2833px}#les-48{contain-intrinsic-size:auto 4592px}#les-49{contain-intrinsic-size:auto 3135px}#les-50{contain-intrinsic-size:auto 3013px}#les-51{contain-intrinsic-size:auto 3119px}#les-52{contain-intrinsic-size:auto 2680px}#les-53{contain-intrinsic-size:auto 2657px}#les-54{contain-intrinsic-size:auto 4463px}#les-55{contain-intrinsic-size:auto 2171px}#les-56{contain-intrinsic-size:auto 2703px}#les-57{contain-intrinsic-size:auto 2313px}#les-58{contain-intrinsic-size:auto 2649px}#les-59{contain-intrinsic-size:auto 2241px}#les-60{contain-intrinsic-size:auto 3621px}#les-61{contain-intrinsic-size:auto 2786px}#les-62{contain-intrinsic-size:auto 2760px}#les-63{contain-intrinsic-size:auto 2299px}#les-64{contain-intrinsic-size:auto 1850px}#les-65{contain-intrinsic-size:auto 2662px}#les-66{contain-intrinsic-size:auto 4339px}#les-67{contain-intrinsic-size:auto 4209px}#les-68{contain-intrinsic-size:auto 1806px}#les-69{contain-intrinsic-size:auto 2222px}#les-70{contain-intrinsic-size:auto 2755px}#les-71{contain-intrinsic-size:auto 1741px}#les-72{contain-intrinsic-size:auto 1677px}#les-73{contain-intrinsic-size:auto 1869px}#les-74{contain-intrinsic-size:auto 2285px}#les-75{contain-intrinsic-size:auto 1484px}#les-76{contain-intrinsic-size:auto 1475px}#les-77{contain-intrinsic-size:auto 2380px}#les-78{contain-intrinsic-size:auto 1974px}#les-79{contain-intrinsic-size:auto 1404px}#les-80{contain-intrinsic-size:auto 1344px}#les-81{contain-intrinsic-size:auto 857px}#les-82{contain-intrinsic-size:auto 2205px}#les-83{contain-intrinsic-size:auto 4125px}#les-84{contain-intrinsic-size:auto 3829px}#les-85{contain-intrinsic-size:auto 3166px}#les-86{contain-intrinsic-size:auto 2711px}#les-87{contain-intrinsic-size:auto 2810px}#les-88{contain-intrinsic-size:auto 2113px}#les-89{contain-intrinsic-size:auto 2086px}#les-90{contain-intrinsic-size:auto 2593px}#les-91{contain-intrinsic-size:auto 2162px}#les-92{contain-intrinsic-size:auto 2187px}#les-93{contain-intrinsic-size:auto 2131px}#les-94{contain-intrinsic-size:auto 1833px}#les-95{contain-intrinsic-size:auto 2630px}#les-96{contain-intrinsic-size:auto 2442px}#les-97{contain-intrinsic-size:auto 2624px}#les-98{contain-intrinsic-size:auto 1704px}#les-99{contain-intrinsic-size:auto 4098px}#les-100{contain-intrinsic-size:auto 1414px}#les-101{contain-intrinsic-size:auto 2638px}#les-102{contain-intrinsic-size:auto 2400px}#les-103{contain-intrinsic-size:auto 2182px}#les-104{contain-intrinsic-size:auto 1132px}#les-105{contain-intrinsic-size:auto 1698px}#les-106{contain-intrinsic-size:auto 2400px}#les-107{contain-intrinsic-size:auto 3679px}#les-108{contain-intrinsic-size:auto 3094px}#les-109{contain-intrinsic-size:auto 2472px}#les-110{contain-intrinsic-size:auto 2146px}#les-111{contain-intrinsic-size:auto 1488px}#les-112{contain-intrinsic-size:auto 1925px}#les-113{contain-intrinsic-size:auto 2143px}#les-114{contain-intrinsic-size:auto 2497px}#les-115{contain-intrinsic-size:auto 1179px}#les-116{contain-intrinsic-size:auto 2754px}#les-117{contain-intrinsic-size:auto 1356px}#les-118{contain-intrinsic-size:auto 858px}#les-119{contain-intrinsic-size:auto 2264px}#les-120{contain-intrinsic-size:auto 2238px}#les-121{contain-intrinsic-size:auto 1120px}#les-122{contain-intrinsic-size:auto 1228px}#les-123{contain-intrinsic-size:auto 858px}#les-124{contain-intrinsic-size:auto 2159px}#les-125{contain-intrinsic-size:auto 2879px}#les-126{contain-intrinsic-size:auto 2753px}#les-127{contain-intrinsic-size:auto 1966px}#les-128{contain-intrinsic-size:auto 2055px}#les-129{contain-intrinsic-size:auto 2027px}#les-130{contain-intrinsic-size:auto 2143px}#les-131{contain-intrinsic-size:auto 2831px}#les-132{contain-intrinsic-size:auto 2300px}#les-133{contain-intrinsic-size:auto 2223px}#les-134{contain-intrinsic-size:auto 2435px}#les-135{contain-intrinsic-size:auto 2360px}#les-136{contain-intrinsic-size:auto 2122px}#les-137{contain-intrinsic-size:auto 3367px}#les-138{contain-intrinsic-size:auto 1368px}#les-139{contain-intrinsic-size:auto 2718px}#les-140{contain-intrinsic-size:auto 1183px}#les-141{contain-intrinsic-size:auto 2585px}#les-142{contain-intrinsic-size:auto 2872px}#les-143{contain-intrinsic-size:auto 829px}#les-144{contain-intrinsic-size:auto 2743px}#les-145{contain-intrinsic-size:auto 2490px}#les-146{contain-intrinsic-size:auto 3725px}#les-147{contain-intrinsic-size:auto 962px}#les-148{contain-intrinsic-size:auto 1947px}#les-149{contain-intrinsic-size:auto 3413px}#les-150{contain-intrinsic-size:auto 3195px}#les-151{contain-intrinsic-size:auto 1568px}#les-152{contain-intrinsic-size:auto 1120px}#les-153{contain-intrinsic-size:auto 1753px}#les-154{contain-intrinsic-size:auto 2347px}#les-155{contain-intrinsic-size:auto 2484px}#les-156{contain-intrinsic-size:auto 2812px}#les-157{contain-intrinsic-size:auto 2756px}#les-158{contain-intrinsic-size:auto 2238px}#les-159{contain-intrinsic-size:auto 2892px}#les-160{contain-intrinsic-size:auto 2378px}#les-161{contain-intrinsic-size:auto 2606px}#les-162{contain-intrinsic-size:auto 2468px}#les-163{contain-intrinsic-size:auto 2668px}#les-164{contain-intrinsic-size:auto 940px}#les-165{contain-intrinsic-size:auto 941px}#les-166{contain-intrinsic-size:auto 1375px}#les-167{contain-intrinsic-size:auto 2077px}#les-168{contain-intrinsic-size:auto 2240px}#les-169{contain-intrinsic-size:auto 2288px}#les-170{contain-intrinsic-size:auto 2356px}#les-171{contain-intrinsic-size:auto 2468px}#les-172{contain-intrinsic-size:auto 2221px}#les-173{contain-intrinsic-size:auto 3235px}#les-174{contain-intrinsic-size:auto 1204px}#les-175{contain-intrinsic-size:auto 3661px}#les-176{contain-intrinsic-size:auto 1237px}#les-177{contain-intrinsic-size:auto 1536px}#les-178{contain-intrinsic-size:auto 2908px}#les-179{contain-intrinsic-size:auto 956px}#les-180{contain-intrinsic-size:auto 1673px}#les-181{contain-intrinsic-size:auto 2976px}#les-182{contain-intrinsic-size:auto 1176px}#les-183{contain-intrinsic-size:auto 1009px}#les-184{contain-intrinsic-size:auto 2383px}#les-185{contain-intrinsic-size:auto 2219px}#les-186{contain-intrinsic-size:auto 2174px}#les-187{contain-intrinsic-size:auto 1431px}#les-188{contain-intrinsic-size:auto 1962px}#les-189{contain-intrinsic-size:auto 1909px}#les-190{contain-intrinsic-size:auto 1643px}#les-191{contain-intrinsic-size:auto 1590px}#les-192{contain-intrinsic-size:auto 1989px}#les-193{contain-intrinsic-size:auto 2918px}#les-194{contain-intrinsic-size:auto 1139px}#les-195{contain-intrinsic-size:auto 2087px}#les-196{contain-intrinsic-size:auto 3182px}#les-197{contain-intrinsic-size:auto 1577px}#les-198{contain-intrinsic-size:auto 2056px}#les-199{contain-intrinsic-size:auto 1333px}#les-200{contain-intrinsic-size:auto 2025px}#les-201{contain-intrinsic-size:auto 2041px}#les-202{contain-intrinsic-size:auto 2001px}#les-203{contain-intrinsic-size:auto 1765px}#les-204{contain-intrinsic-size:auto 3516px}#les-205{contain-intrinsic-size:auto 3382px}#les-206{contain-intrinsic-size:auto 1091px}#les-207{contain-intrinsic-size:auto 1455px}#les-208{contain-intrinsic-size:auto 1905px}#les-209{contain-intrinsic-size:auto 1485px}#les-210{contain-intrinsic-size:auto 2023px}#les-211{contain-intrinsic-size:auto 2518px}#les-212{contain-intrinsic-size:auto 1361px}#les-213{contain-intrinsic-size:auto 947px}#les-214{contain-intrinsic-size:auto 28857px}#les-215{contain-intrinsic-size:auto 1852px}#les-216{contain-intrinsic-size:auto 3047px}#les-217{contain-intrinsic-size:auto 4077px}#les-218{contain-intrinsic-size:auto 2134px}#les-219{contain-intrinsic-size:auto 4465px}#les-220{contain-intrinsic-size:auto 2383px}#les-221{contain-intrinsic-size:auto 2114px}#les-222{contain-intrinsic-size:auto 2081px}#les-223{contain-intrinsic-size:auto 931px}#les-224{contain-intrinsic-size:auto 1467px}#les-225{contain-intrinsic-size:auto 1201px}#les-226{contain-intrinsic-size:auto 1476px}#les-227{contain-intrinsic-size:auto 2186px}#les-228{contain-intrinsic-size:auto 1925px}#les-229{contain-intrinsic-size:auto 4922px}#les-230{contain-intrinsic-size:auto 2709px}#les-231{contain-intrinsic-size:auto 2296px}#les-232{contain-intrinsic-size:auto 1984px}#les-233{contain-intrinsic-size:auto 2040px}#les-234{contain-intrinsic-size:auto 3883px}#les-235{contain-intrinsic-size:auto 2836px}#les-236{contain-intrinsic-size:auto 2510px}#les-237{contain-intrinsic-size:auto 3315px}#les-238{contain-intrinsic-size:auto 3590px}#les-239{contain-intrinsic-size:auto 1831px}#les-240{contain-intrinsic-size:auto 3053px}#les-241{contain-intrinsic-size:auto 2547px}#les-242{contain-intrinsic-size:auto 3625px}#les-243{contain-intrinsic-size:auto 2416px}#les-244{contain-intrinsic-size:auto 2044px}#les-245{contain-intrinsic-size:auto 1889px}#les-246{contain-intrinsic-size:auto 2051px}#les-247{contain-intrinsic-size:auto 2397px}#les-248{contain-intrinsic-size:auto 1693px}#les-249{contain-intrinsic-size:auto 2412px}#les-250{contain-intrinsic-size:auto 1852px}#les-251{contain-intrinsic-size:auto 1008px}#les-252{contain-intrinsic-size:auto 1529px}#les-253{contain-intrinsic-size:auto 924px}#les-254{contain-intrinsic-size:auto 2768px}#les-255{contain-intrinsic-size:auto 2527px}#les-256{contain-intrinsic-size:auto 975px}#les-257{contain-intrinsic-size:auto 738px}#les-258{contain-intrinsic-size:auto 2202px}#les-259{contain-intrinsic-size:auto 2780px}#les-260{contain-intrinsic-size:auto 1784px}#les-261{contain-intrinsic-size:auto 2147px}#les-262{contain-intrinsic-size:auto 2097px}#les-263{contain-intrinsic-size:auto 2165px}#les-264{contain-intrinsic-size:auto 1783px}#les-265{contain-intrinsic-size:auto 2957px}#les-266{contain-intrinsic-size:auto 3076px}#les-267{contain-intrinsic-size:auto 2962px}#les-268{contain-intrinsic-size:auto 2358px}#les-269{contain-intrinsic-size:auto 1525px}#les-270{contain-intrinsic-size:auto 1855px}#les-271{contain-intrinsic-size:auto 2179px}#les-272{contain-intrinsic-size:auto 3573px}#les-273{contain-intrinsic-size:auto 1929px}#les-274{contain-intrinsic-size:auto 2184px}#les-275{contain-intrinsic-size:auto 3378px}#les-276{contain-intrinsic-size:auto 2948px}#les-277{contain-intrinsic-size:auto 2555px}#les-278{contain-intrinsic-size:auto 2427px}#les-279{contain-intrinsic-size:auto 2465px}#les-280{contain-intrinsic-size:auto 2350px}#les-281{contain-intrinsic-size:auto 2502px}#les-282{contain-intrinsic-size:auto 2282px}#les-283{contain-intrinsic-size:auto 2657px}#les-284{contain-intrinsic-size:auto 3272px}#les-285{contain-intrinsic-size:auto 3080px}#les-286{contain-intrinsic-size:auto 2378px}#les-287{contain-intrinsic-size:auto 2340px}#les-288{contain-intrinsic-size:auto 2841px}#les-289{contain-intrinsic-size:auto 2282px}#les-290{contain-intrinsic-size:auto 2129px}#les-291{contain-intrinsic-size:auto 2666px}#les-292{contain-intrinsic-size:auto 2181px}#les-293{contain-intrinsic-size:auto 2697px}#les-294{contain-intrinsic-size:auto 2403px}#les-295{contain-intrinsic-size:auto 2276px}#les-296{contain-intrinsic-size:auto 2584px}#les-297{contain-intrinsic-size:auto 2794px}#les-298{contain-intrinsic-size:auto 2489px}#les-299{contain-intrinsic-size:auto 2158px}#les-300{contain-intrinsic-size:auto 2582px}#les-301{contain-intrinsic-size:auto 3283px}#les-302{contain-intrinsic-size:auto 2031px}#les-303{contain-intrinsic-size:auto 1646px}#les-304{contain-intrinsic-size:auto 901px}#les-305{contain-intrinsic-size:auto 2105px}#les-306{contain-intrinsic-size:auto 2315px}#les-307{contain-intrinsic-size:auto 4107px}#les-308{contain-intrinsic-size:auto 3519px}#les-309{contain-intrinsic-size:auto 3346px}#les-310{contain-intrinsic-size:auto 2951px}#les-311{contain-intrinsic-size:auto 3572px}#les-312{contain-intrinsic-size:auto 3150px}#les-313{contain-intrinsic-size:auto 2800px}#les-314{contain-intrinsic-size:auto 3041px}#les-315{contain-intrinsic-size:auto 2451px}#les-316{contain-intrinsic-size:auto 2630px}#les-317{contain-intrinsic-size:auto 2618px}#les-318{contain-intrinsic-size:auto 1370px}#les-319{contain-intrinsic-size:auto 2532px}#les-320{contain-intrinsic-size:auto 1820px}#les-321{contain-intrinsic-size:auto 3200px}#les-322{contain-intrinsic-size:auto 1944px}#les-323{contain-intrinsic-size:auto 4606px}#les-324{contain-intrinsic-size:auto 3294px}#les-325{contain-intrinsic-size:auto 2997px}#les-326{contain-intrinsic-size:auto 2062px}#les-327{contain-intrinsic-size:auto 1765px}#les-328{contain-intrinsic-size:auto 2945px}#les-329{contain-intrinsic-size:auto 1555px}#les-330{contain-intrinsic-size:auto 5233px}#les-331{contain-intrinsic-size:auto 2098px}#les-332{contain-intrinsic-size:auto 2675px}#les-333{contain-intrinsic-size:auto 2011px}#les-334{contain-intrinsic-size:auto 2538px}#les-335{contain-intrinsic-size:auto 3184px}#les-336{contain-intrinsic-size:auto 2264px}#les-337{contain-intrinsic-size:auto 2660px}#les-338{contain-intrinsic-size:auto 4079px}#les-339{contain-intrinsic-size:auto 2642px}#les-340{contain-intrinsic-size:auto 3062px}#les-341{contain-intrinsic-size:auto 2725px}#les-342{contain-intrinsic-size:auto 2259px}#les-343{contain-intrinsic-size:auto 2427px}#les-344{contain-intrinsic-size:auto 2644px}#les-345{contain-intrinsic-size:auto 2919px}#les-346{contain-intrinsic-size:auto 3009px}#les-347{contain-intrinsic-size:auto 1601px}#les-348{contain-intrinsic-size:auto 1938px}#les-349{contain-intrinsic-size:auto 1997px}#les-350{contain-intrinsic-size:auto 2828px}#les-351{contain-intrinsic-size:auto 2382px}#les-352{contain-intrinsic-size:auto 979px}#les-353{contain-intrinsic-size:auto 985px}#les-354{contain-intrinsic-size:auto 972px}#les-355{contain-intrinsic-size:auto 790px}#les-356{contain-intrinsic-size:auto 871px}#les-357{contain-intrinsic-size:auto 1050px}#les-358{contain-intrinsic-size:auto 795px}#les-359{contain-intrinsic-size:auto 973px}#les-360{contain-intrinsic-size:auto 1064px}#les-361{contain-intrinsic-size:auto 1039px}#les-362{contain-intrinsic-size:auto 1072px}#les-363{contain-intrinsic-size:auto 924px}#les-364{contain-intrinsic-size:auto 874px}#les-365{contain-intrinsic-size:auto 1847px}#les-366{contain-intrinsic-size:auto 1666px}#les-367{contain-intrinsic-size:auto 32622px}#les-368{contain-intrinsic-size:auto 29016px}}@media print{#qr-root main.col>section.vol,#qr-root article.lesson{content-visibility:visible !important;contain-intrinsic-size:auto none !important}}
+
+:root{
+  --bd-spine:#8a5d16; --bd-build:#1d6b45; --bd-options:#1d5b8f; --bd-ml:#6c3fa8;
+  --bd-hft:#0f6b6b;   --bd-macro:#8a4a12; --bd-crypto:#9c2f6b; --bd-ref:#5f646d;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bd-spine:#d7a751; --bd-build:#4cbb87; --bd-options:#6fb2e8; --bd-ml:#b493e6;
+  --bd-hft:#4fc4c4;   --bd-macro:#dfa93f; --bd-crypto:#e08ab8; --bd-ref:#97948d;
+}}
+:root[data-theme="dark"]{
+  --bd-spine:#d7a751; --bd-build:#4cbb87; --bd-options:#6fb2e8; --bd-ml:#b493e6;
+  --bd-hft:#4fc4c4;   --bd-macro:#dfa93f; --bd-crypto:#e08ab8; --bd-ref:#97948d;
+}
+.qcr-seg-spine{--bd:var(--bd-spine)}.qcr-seg-build{--bd:var(--bd-build)}
+.qcr-seg-options{--bd:var(--bd-options)}.qcr-seg-ml{--bd:var(--bd-ml)}
+.qcr-seg-hft{--bd:var(--bd-hft)}.qcr-seg-macro{--bd:var(--bd-macro)}
+.qcr-seg-crypto{--bd:var(--bd-crypto)}.qcr-seg-ref{--bd:var(--bd-ref)}
+
+/* ---------- the route panel ---------- */
+.qcr-panel{ margin:20px 0 8px; padding:18px 18px 14px; border:1px solid var(--rule);
+  border-radius:var(--r-lg); background:var(--surface); font-family:var(--sans); }
+.qcr-top{ display:flex; gap:14px; align-items:flex-start; flex-wrap:wrap; justify-content:space-between; }
+.qcr-eyebrow{ margin:0; font-size:11px; font-weight:700; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--bd-spine); }
+.qcr-panel h2{ margin:4px 0 0; font-family:var(--serif); font-size:20px; line-height:1.3;
+  font-weight:600; letter-spacing:-.01em; max-width:34ch; }
+.qcr-seg{ display:flex; flex:none; border:1px solid var(--rule-strong); border-radius:999px;
+  overflow:hidden; background:var(--surface-2); }
+.qcr-seg button{ appearance:none; border:0; background:transparent; cursor:pointer;
+  font:inherit; font-size:12.5px; font-weight:600; padding:7px 14px; color:var(--ink-3);
+  white-space:nowrap; }
+.qcr-seg button+button{ border-left:1px solid var(--rule); }
+.qcr-seg button:hover{ color:var(--ink); }
+.qcr-seg button[aria-pressed="true"]{ background:var(--accent); color:#fff; }
+:root[data-theme="dark"] .qcr-seg button[aria-pressed="true"],
+:root:not([data-theme="light"]) .qcr-seg button[aria-pressed="true"]{ color:#171205; }
+.qcr-lede{ margin:12px 0 0; font-family:var(--serif); font-size:15px; line-height:1.6;
+  color:var(--ink-2); max-width:74ch; }
+.qcr-lede b{ color:var(--ink); font-weight:600; }
+
+.qcr-bar{ display:flex; gap:2px; height:12px; margin:16px 0 12px; }
+.qcr-bar i{ position:relative; border-radius:2px; background:var(--surface-3); overflow:hidden;
+  opacity:.42; transition:opacity .15s; }
+.qcr-bar i.on{ opacity:1; }
+.qcr-bar i::after{ content:""; position:absolute; inset:0; background:var(--bd); opacity:.24; }
+.qcr-bar i em{ position:absolute; inset:0 auto 0 0; background:var(--bd); }
+
+.qcr-stats{ display:flex; flex-wrap:wrap; gap:10px; margin:0 0 6px; }
+.qcr-stat{ flex:1 1 140px; padding:11px 13px; border:1px solid var(--rule);
+  border-radius:var(--r-md); background:var(--surface-2); }
+.qcr-stat b{ display:block; font-size:20px; font-weight:600; letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums; }
+.qcr-stat span{ display:block; margin-top:2px; font-size:11.5px; color:var(--ink-3); }
+.qcr-fine{ margin:8px 0 0; font-size:12px; line-height:1.55; color:var(--ink-3); max-width:70ch; }
+
+.qcr-bands{ margin:14px 0 4px; border-top:1px solid var(--rule); }
+.qcr-brow{ display:flex; gap:11px; align-items:baseline; padding:9px 2px;
+  border-bottom:1px solid var(--rule); opacity:.5; }
+.qcr-brow.on{ opacity:1; }
+.qcr-dot{ flex:none; width:9px; height:9px; border-radius:3px; background:var(--bd);
+  transform:translateY(-1px); }
+.qcr-bt{ flex:1; min-width:0; }
+.qcr-bt b{ display:block; font-size:13px; font-weight:600; }
+.qcr-bt em{ display:block; margin-top:2px; font-style:normal; font-size:12px;
+  line-height:1.5; color:var(--ink-3); }
+.qcr-bn{ flex:none; text-align:right; font-size:12.5px; font-variant-numeric:tabular-nums;
+  color:var(--ink-2); }
+.qcr-bn em{ display:block; font-style:normal; font-size:11px; color:var(--ink-3); }
+.qcr-next{ font-size:12.5px; color:var(--ink-3); }
+
+/* ---------- separators down the map ---------- */
+.qcr-sep{ display:grid; grid-template-columns:auto 1fr auto; gap:4px 10px;
+  align-items:baseline; margin:26px 0 8px; padding:0 2px 9px;
+  border-bottom:1px solid var(--rule-strong); font-family:var(--sans); }
+.qcr-sep:first-child{ margin-top:8px; }
+.qcr-kick{ grid-row:1; font-size:10px; font-weight:700; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--bd); }
+.qcr-sep b{ grid-row:1; font-size:15px; font-weight:600; letter-spacing:-.01em; }
+.qcr-secn{ grid-row:1; font-size:11.5px; color:var(--ink-3);
+  font-variant-numeric:tabular-nums; white-space:nowrap; }
+.qcr-secd{ grid-column:2/4; grid-row:2; font-style:normal; font-family:var(--serif);
+  font-size:13.5px; line-height:1.55; color:var(--ink-3); max-width:76ch; }
+@media (max-width:640px){
+  .qcr-sep{ grid-template-columns:1fr auto; }
+  .qcr-kick{ grid-column:1/3; grid-row:1; }
+  .qcr-sep b{ grid-column:1; grid-row:2; }
+  .qcr-secn{ grid-column:2; grid-row:2; }
+  .qcr-secd{ grid-column:1/3; grid-row:3; }
+}
+.qc-stagecard[data-band]{ border-left:3px solid var(--bd); }
+.qc-stagecard[data-band="spine"]{ --bd:var(--bd-spine) }
+.qc-stagecard[data-band="build"]{ --bd:var(--bd-build) }
+.qc-stagecard[data-band="options"]{ --bd:var(--bd-options) }
+.qc-stagecard[data-band="ml"]{ --bd:var(--bd-ml) }
+.qc-stagecard[data-band="hft"]{ --bd:var(--bd-hft) }
+.qc-stagecard[data-band="macro"]{ --bd:var(--bd-macro) }
+.qc-stagecard[data-band="crypto"]{ --bd:var(--bd-crypto) }
+.qc-stagecard[data-band="ref"]{ --bd:var(--bd-ref) }
+
+/* ---------- filtering ---------- */
+.qc-main[data-qcr-route="spine"] .qc-stagecard:not([data-band="spine"]),
+.qc-main[data-qcr-route="spine"] .qcr-sep:not([data-band="spine"]){ display:none }
+.qc-main[data-qcr-route="core"] .qc-stagecard:not([data-band="spine"]):not([data-band="build"]),
+.qc-main[data-qcr-route="core"] .qcr-sep:not([data-band="spine"]):not([data-band="build"]){ display:none }
+.qc-stagelist[data-qcr-route="spine"] .qc-stage-b:not([data-band="spine"]),
+.qc-stagelist[data-qcr-route="core"] .qc-stage-b:not([data-band="spine"]):not([data-band="build"]){ display:none }
+.qc-stage-b[data-band]{ box-shadow:inset 2px 0 0 var(--bd); }
+.qc-stage-b[data-band="spine"]{ --bd:var(--bd-spine) }
+.qc-stage-b[data-band="build"]{ --bd:var(--bd-build) }
+.qc-stage-b[data-band="options"]{ --bd:var(--bd-options) }
+.qc-stage-b[data-band="ml"]{ --bd:var(--bd-ml) }
+.qc-stage-b[data-band="hft"]{ --bd:var(--bd-hft) }
+.qc-stage-b[data-band="macro"]{ --bd:var(--bd-macro) }
+.qc-stage-b[data-band="crypto"]{ --bd:var(--bd-crypto) }
+.qc-stage-b[data-band="ref"]{ --bd:var(--bd-ref) }
+
+/* ---------- forward reference note on a lesson ---------- */
+.qcr-fref{ margin:12px 0 0; padding:11px 13px; border:1px solid var(--warn-soft);
+  border-left:3px solid var(--warn); border-radius:var(--r-md); background:var(--warn-soft);
+  font-family:var(--sans); font-size:13px; line-height:1.6; color:var(--ink-2); }
+.qcr-fref b{ color:var(--ink); }
+.qcr-fref a{ color:var(--accent); cursor:pointer; text-decoration:underline;
+  text-underline-offset:2px; }
+@media print{ .qcr-panel,.qcr-sep{ break-inside:avoid } }
+
+/* ---------- the guess before the reading ---------- */
+.qcl-pre{ margin:20px 0; padding:18px 18px 14px; border:1px solid var(--accent-line);
+  border-left:3px solid var(--accent); border-radius:var(--r-lg); background:var(--accent-soft);
+  font-family:var(--sans); }
+.qcl-kick{ margin:0; font-size:10.5px; font-weight:700; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--accent); }
+.qcl-pre h2{ margin:5px 0 0; font-family:var(--serif); font-size:20px; line-height:1.3;
+  font-weight:600; letter-spacing:-.01em; }
+.qcl-say{ margin:9px 0 0; font-family:var(--serif); font-size:14.5px; line-height:1.6;
+  color:var(--ink-2); max-width:70ch; }
+.qcl-q{ margin:14px 0 0; padding:13px 15px; border:1px solid var(--rule); border-radius:var(--r-md);
+  background:var(--surface); font-family:var(--serif); font-size:17px; line-height:1.55; color:var(--ink); }
+.qcl-q em{ font-style:italic; }
+#qcl-att{ display:block; width:100%; margin:11px 0 0; padding:11px 13px; resize:vertical;
+  border:1px solid var(--rule-strong); border-radius:var(--r-md); background:var(--surface);
+  color:var(--ink); font-family:var(--serif); font-size:16px; line-height:1.55; }
+#qcl-att:focus{ outline:2px solid var(--accent); outline-offset:1px; }
+.qcl-you{ margin:13px 0 0; padding:11px 13px; border:1px solid var(--you-line);
+  border-left:3px solid var(--you); border-radius:var(--r-md); background:var(--you-soft);
+  font-family:var(--serif); font-size:15px; line-height:1.6; white-space:pre-wrap; }
+.qcl-you b{ display:block; margin-bottom:4px; font-family:var(--sans); font-size:10.5px;
+  font-weight:700; letter-spacing:.13em; text-transform:uppercase; color:var(--you); }
+.qcl-a{ margin:13px 0 0; padding:13px 15px; border:1px solid var(--rule); border-radius:var(--r-md);
+  background:var(--surface); font-family:var(--serif); font-size:16px; line-height:1.62; }
+.qcl-a p{ margin:0 0 9px } .qcl-a p:last-child{ margin-bottom:0 }
+.qc-main.qcl-pre-open .qc-panel.hi{ display:none }
+
+/* ---------- where a reference page sits on the route ---------- */
+.qcl-where{ display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 10px;
+  margin:-2px 0 16px; padding:0 0 0 9px; border-left:2px solid var(--bd, var(--rule-strong));
+  font-family:var(--sans); }
+.qcl-wk{ font-size:10px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--bd, var(--ink-3)); }
+.qcl-wm{ font-size:12px; color:var(--ink-2); }
+.qcl-wn{ font-size:11.5px; color:var(--ink-3); font-variant-numeric:tabular-nums; }
+@media print{ .qcl-pre{ display:none } }
+
+/* ---------- where the route and Volume 25.5 disagree ---------- */
+.qcr-excl{ margin:0; padding:11px 15px 12px; border-top:1px solid var(--rule);
+  background:var(--surface-2); font-family:var(--sans); font-size:12.5px;
+  line-height:1.6; color:var(--ink-3); }
+.qcr-excl b{ color:var(--ink-2); font-weight:600; }
+.qcr-excl.clash{ background:var(--warn-soft); color:var(--ink-2);
+  box-shadow:inset 3px 0 0 var(--warn); }
+.qcr-excl.clash b{ color:var(--ink); }
+.qcr-x{ appearance:none; border:0; background:none; padding:0; cursor:pointer;
+  font:inherit; font-weight:600; color:var(--accent); text-decoration:underline;
+  text-underline-offset:2px; white-space:nowrap; max-width:100%; }
+@media (max-width: 400px){ .qcr-x{ white-space:normal; text-align:left; } }
+.qcl-count{ margin-left:.6em; padding-left:.6em; border-left:1px solid currentColor;
+  opacity:.75; font-weight:600; letter-spacing:.08em; }
+
+/* ==========================================================================
+   iOS / Sitecase — additions
+   ========================================================================== */
+
+/* --- the two full-height panes the dvh block missed. Only reachable on iPad,
+       where the sidebar is shown and 100vh is the LARGE viewport: the bottom
+       of the stage list sits under the toolbar and cannot be scrolled to. --- */
+@supports (height: 100dvh){
+  #qr-root .app, .qc-app{ min-height: 100dvh; }
+  #qr-root .sidebar, .qc-side{ height: 100dvh; }
+}
+
+/* --- WebKit still wants the prefix, and without it these two read as flat
+       panels over moving text rather than as glass --- */
+#qr-root .topbar{ -webkit-backdrop-filter: saturate(1.6) blur(12px); }
+#qr-root .review{ -webkit-backdrop-filter: blur(3px); }
+
+/* --- a tap is not a hover. Without this every button keeps its hover state
+       after you touch it, so the last thing tapped looks permanently armed. --- */
+@media (hover: none){
+  #qc-bar button:hover, .qc-btn:hover, .qc-opt:hover, .qc-lrow:hover,
+  .qc-stage-b:hover, .qc-stagehead:hover, .qcr-seg button:hover,
+  #qr-root .btn:hover, #qr-root .btn-study:hover, #qr-root .btn-plain:hover,
+  #qr-root .nav-item:hover, #qr-root .les-check-b:hover, #qr-root .sec-check:hover,
+  #tr-root .btn:hover, #tr-root .chip:hover, #tr-root .opt:hover{
+    background: inherit; color: inherit; border-color: inherit;
+  }
+  a:hover{ text-decoration: inherit; }
+}
+
+/* --- 44pt applies to the controls in the Reference and the Trainer too; the
+       existing rule only covered the Path's own classes. Inline links inside
+       prose are deliberately left alone — a paragraph cannot be all buttons. --- */
+@media (pointer: coarse){
+  #qr-root .btn, #qr-root .btn-study, #qr-root .btn-plain, #qr-root .les-check-b,
+  #qr-root .nav-item, #qr-root .rail-b, #qr-root .calc-reset, #qr-root .gl-close,
+  #tr-root .btn, #tr-root .chip, #tr-root .opt, #tr-root .dopt, #tr-root .seqopt,
+  #tr-root .spotline, #tr-root select.btn{
+    min-height: 44px;
+  }
+  #qr-root .sec-check, #qr-root .anchor{ min-height: 32px; min-width: 32px; }
+  #qr-root .btn, #qr-root .btn-study, #qr-root .btn-plain, #tr-root .btn, #tr-root .chip{
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  /* the range sliders in the calculators are the hardest thing on the page to
+     hit with a thumb */
+  input[type=range]{ height: 34px; }
+  input[type=range]::-webkit-slider-thumb{ width: 26px; height: 26px; }
+}
+
+/* --- back up and restore, because a file download does not work here --- */
+.qcr-backup{ display:flex; flex-wrap:wrap; align-items:center; gap:10px;
+  margin:14px 0 2px; padding-top:13px; border-top:1px solid var(--rule); }
+.qcr-backup span{ flex:1; min-width:min(220px,100%); font-size:12px; line-height:1.55; color:var(--ink-3); }
+#qc-bk{ position:fixed; inset:0; z-index:10000; display:flex; align-items:center;
+  justify-content:center; padding:18px; background:rgba(14,16,20,.55);
+  -webkit-backdrop-filter:blur(3px); backdrop-filter:blur(3px);
+  padding-bottom:calc(18px + env(safe-area-inset-bottom,0px));
+  padding-top:calc(18px + env(safe-area-inset-top,0px)); }
+.qc-bk-card{ width:min(680px,100%); max-height:100%; overflow:auto;
+  background:var(--surface); border:1px solid var(--rule-strong); border-radius:var(--r-lg);
+  padding:20px; font-family:var(--sans); box-shadow:var(--shadow-md);
+  -webkit-overflow-scrolling:touch; }
+.qc-bk-card h2{ margin:16px 0 6px; font-family:var(--serif); font-size:19px; font-weight:600; }
+.qc-bk-card h2:first-of-type{ margin-top:0 }
+.qc-bk-card p{ margin:0 0 10px; font-size:13.5px; line-height:1.6; color:var(--ink-2); }
+.qc-bk-alert{ padding:11px 13px; border-radius:var(--r-md);
+  background:var(--warn-soft); border-left:3px solid var(--warn); color:var(--ink) !important; }
+.qc-bk-card textarea{ width:100%; font-family:var(--mono); font-size:16px; line-height:1.4;
+  padding:10px; border:1px solid var(--rule-strong); border-radius:var(--r-md);
+  background:var(--surface-2); color:var(--ink); resize:vertical; -webkit-user-select:text; user-select:text; }
+.qc-bk-row{ display:flex; flex-wrap:wrap; align-items:center; gap:9px; margin:10px 0 4px; }
+.qc-bk-b{ appearance:none; font:inherit; font-size:14px; font-weight:600; cursor:pointer;
+  padding:11px 16px; min-height:44px; border-radius:999px; border:1px solid var(--rule-strong);
+  background:var(--surface); color:var(--ink); }
+.qc-bk-b.pri{ background:var(--accent); border-color:var(--accent); color:#fff; }
+:root[data-theme="dark"] .qc-bk-b.pri, :root:not([data-theme="light"]) .qc-bk-b.pri{ color:#171205; }
+.qc-bk-b.ghost{ background:none; border-color:transparent; color:var(--ink-3); }
+.qc-bk-note{ font-size:12.5px; color:var(--ink-3); }
+
+/* ==========================================================================
+   EVERY DEVICE — the corrections a viewport sweep cannot see
+   ========================================================================== */
+
+/* --- Right and wrong were told apart by colour alone. That fails twice: for
+       red-green colour blindness on any screen, and completely under Windows
+       high contrast, where the browser replaces both the background and the
+       border and the two states become identical. Volume 00's step strip
+       already marks "done" with a tick; the same idea, applied where it
+       decides whether you think you got it right. --- */
+.qc-opt.right, .qc-opt.wrong,
+#tr-root .opt.right, #tr-root .opt.wrong{ position: relative; padding-right: 34px; }
+.qc-opt.right::after, #tr-root .opt.right::after{
+  content: "\2713"; position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+  font-weight: 700; font-size: 15px; line-height: 1; color: var(--pos); }
+.qc-opt.wrong::after, #tr-root .opt.wrong::after{
+  content: "\2715"; position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+  font-weight: 700; font-size: 15px; line-height: 1; color: var(--neg); }
+#tr-root .seqrow.bad > b.sn::after{ content: "\2715"; margin-left: .35em; font-weight: 700; }
+#tr-root .badge.good::before{ content: "\2713\00a0"; }
+#tr-root .badge.bad::before{ content: "\2715\00a0"; }
+#tr-root .badge.mid::before{ content: "\2013\00a0"; }
+#tr-root .fb.ok .hd::before{ content: "\2713\00a0"; }
+
+/* --- Windows high contrast and any other forced-colours mode. Without this
+       the mode bar cannot say which mode you are in, the route control cannot
+       say which route is showing, and the band colours vanish entirely. --- */
+@media (forced-colors: active){
+  #qc-bar button[aria-pressed="true"],
+  .qcr-seg button[aria-pressed="true"],
+  #tr-root .btn.on, #tr-root .chip.on{
+    forced-color-adjust: none;
+    background: Highlight !important; color: HighlightText !important;
+    border: 1px solid Highlight !important;
+  }
+  #qc-bar button, .qcr-seg button{ border: 1px solid transparent; }
+  .qc-opt.right, #tr-root .opt.right{ outline: 2px solid Highlight; outline-offset: -2px; }
+  .qc-opt.wrong, #tr-root .opt.wrong{ outline: 2px dotted currentColor; outline-offset: -2px; }
+  .qc-opt.right::after, .qc-opt.wrong::after,
+  #tr-root .opt.right::after, #tr-root .opt.wrong::after{ color: currentColor; }
+  /* the band bar and dots are pure colour; give them an edge so they survive */
+  .qcr-bar i{ border: 1px solid currentColor; }
+  .qcr-bar i.on em{ background: Highlight; }
+  .qcr-dot{ border: 1px solid currentColor; }
+  .qc-stagecard[data-band]{ border-left-width: 4px; border-left-style: double; }
+  .qcr-excl.clash{ outline: 2px solid currentColor; outline-offset: -2px; }
+  .qcl-pre, .qcr-panel, .qc-bk-card{ border: 1px solid currentColor; }
+  .qc-boot-mark{ forced-color-adjust: none; background: Highlight; color: HighlightText; }
+}
+
+/* --- the route control was the first thing in the document to overflow, and
+       it did so just under 300px: narrower than any phone, but reachable by
+       enlarging text on a small one. --- */
+@media (max-width: 340px){
+  .qcr-top{ gap: 10px; }
+  .qcr-seg{ width: 100%; }
+  .qcr-seg button{ flex: 1; padding: 8px 6px; font-size: 12px; }
+  .qcr-panel, .qcl-pre{ padding-left: 13px; padding-right: 13px; }
+  .qcr-stat{ flex-basis: 100%; }
+}
+.qcr-seg{ max-width: 100%; }
+.qcr-seg button{ min-width: 0; }
+
+/* --- switching to the Reference lays out 368 lessons for the first time. On a
+       fast machine that is a frame; on a phone from a few years ago it is six
+       seconds of a screen that looks frozen. The delay is unavoidable; being
+       silent about it is not. The 180ms delay means a fast switch never
+       paints this at all. --- */
+#qc-busy{
+  position: fixed; z-index: 9800; left: 50%; transform: translateX(-50%);
+  top: calc(env(safe-area-inset-top, 0px) + 14px);
+  padding: 9px 16px; border-radius: 999px;
+  background: var(--surface); border: 1px solid var(--rule-strong);
+  box-shadow: var(--shadow-md); color: var(--ink-2);
+  font-family: var(--sans); font-size: 13px; white-space: nowrap;
+  opacity: 0; pointer-events: none; transition: opacity .12s ease .18s;
+}
+#qc-busy.on{ opacity: 1; }
+@media (prefers-reduced-motion: reduce){ #qc-busy{ transition-delay: .18s; transition-duration: 0s; } }
+
+/* --- The Trainer's chips clear the outline, so the Path chip I added to that
+       row had no keyboard focus indicator at all. Anything focusable must show
+       where the focus is, whatever row it lives in. --- */
+#pathBtn:focus-visible, #qc-bk-open:focus-visible, .qcr-x:focus-visible,
+.qcr-seg button:focus-visible, .qc-bk-b:focus-visible, [data-qcl]:focus-visible{
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+@media (forced-colors: active){
+  #pathBtn:focus-visible, #qc-bk-open:focus-visible, .qcr-x:focus-visible,
+  .qcr-seg button:focus-visible, .qc-bk-b:focus-visible, [data-qcl]:focus-visible{
+    outline: 2px solid Highlight;
+  }
+}
+.qc-bk-card:focus{ outline: none; }
+
+/* --- what came of a save attempt --- */
+#qc-dl-msg{ position:fixed; z-index:9900; left:50%; transform:translateX(-50%);
+  bottom:calc(env(safe-area-inset-bottom,0px) + 74px); max-width:min(440px,calc(100vw - 28px));
+  padding:10px 15px; border-radius:999px; background:var(--surface);
+  border:1px solid var(--rule-strong); box-shadow:var(--shadow-md); color:var(--ink-2);
+  font-family:var(--sans); font-size:13px; line-height:1.4; text-align:center;
+  opacity:0; pointer-events:none; transition:opacity .15s ease; }
+#qc-dl-msg.on{ opacity:1; }
+#qc-dl-msg.bad{ border-color:var(--warn); background:var(--warn-soft); color:var(--ink); }

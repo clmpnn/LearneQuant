@@ -1,0 +1,22 @@
+{
+  "name": "The Quant Curriculum",
+  "short_name": "Quant",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "browser"],
+  "orientation": "any",
+  "background_color": "#fbfaf8",
+  "theme_color": "#fbfaf8",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["education", "finance", "books"],
+  "description": "368 ordered lessons across 53 stages, a complete reference, and a practice engine of over a thousand generated problems. Every lesson is open from the start; the order is a recommendation, not a gate.",
+  "icons": [
+    { "src": "assets/icons/icon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "assets/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

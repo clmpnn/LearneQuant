@@ -1,0 +1,614 @@
+/* source blocks [7, 8, 9] */
+/* ============================================================
+   iOS / Sitecase layer
+   Sitecase renders this file locally with no server, so nothing
+   here may depend on the network. Everything below is either a
+   safe-area correction, a touch correction, or a WebKit fix.
+   ============================================================ */
+:root{
+  --sa-t: env(safe-area-inset-top, 0px);
+  --sa-b: env(safe-area-inset-bottom, 0px);
+  --sa-l: env(safe-area-inset-left, 0px);
+  --sa-r: env(safe-area-inset-right, 0px);
+  --qc-bar-h: 46px;
+}
+
+/* --- the page sits inside the safe area, and clears the mode bar --- */
+html{
+  -webkit-text-size-adjust: 100%; text-size-adjust: 100%;
+  overscroll-behavior-y: contain;          /* no pull-to-refresh reload mid-lesson */
+}
+body{
+  overscroll-behavior-y: contain;
+  -webkit-tap-highlight-color: transparent;
+  padding-left: var(--sa-l);
+  padding-right: var(--sa-r);
+  padding-bottom: calc(var(--sa-b) + var(--qc-bar-h) + 28px);
+}
+
+/* --- the top inset belongs to whatever is pinned at the top, so its
+       background fills the notch instead of leaving a bare strip --- */
+#qr-root .topbar{ padding-top: calc(9px + var(--sa-t)); }
+#tr-root .bar-in.row1{ padding-top: calc(8px + var(--sa-t)); }
+#qr-root .sidebar, #qc-root .qc-side{ padding-top: var(--sa-t); }
+#qc-root .qc-main{ padding-top: calc(var(--sa-t) + 4px); }
+#qr-root .toc{ top: calc(58px + var(--sa-t)); }
+#qr-root .filters{ top: calc(46px + var(--sa-t)); }
+#qr-root main.col [id]{ scroll-margin-top: calc(62px + var(--sa-t)); }
+@media (max-width: 900px){ #qr-root .topbar{ padding-top: calc(7px + var(--sa-t)); } }
+
+/* --- floating chrome clears the home indicator and Sitecase's toolbar --- */
+#qc-bar{
+  bottom: calc(var(--sa-b) + 12px);
+  max-width: calc(100vw - var(--sa-l) - var(--sa-r) - 20px);
+}
+#qc-ret{ bottom: calc(var(--sa-b) + var(--qc-bar-h) + 20px); }
+#qc-store-warn{
+  position: fixed; z-index: 9500; left: 50%; transform: translateX(-50%);
+  top: calc(var(--sa-t) + 10px); max-width: calc(100vw - var(--sa-l) - var(--sa-r) - 24px);
+  display: none; padding: 9px 14px; border-radius: 999px;
+  background: var(--warn-soft, #fdf1d8); border: 1px solid var(--warn, #b8860b);
+  color: var(--ink, #14161a); font-family: var(--sans); font-size: 13px; line-height: 1.35;
+  box-shadow: var(--shadow-md, 0 4px 16px rgba(0,0,0,.14));
+}
+#qc-store-warn.on{ display: block; }
+
+/* --- dynamic viewport units: iOS chrome grows and shrinks --- */
+@supports (height: 100dvh){
+  #tr-root{ min-height: 100dvh; }
+  #qr-root .toc{ max-height: calc(100dvh - 80px); }
+  #qr-root .rv-card{ max-height: 100dvh; }
+}
+
+@media (pointer: coarse){
+  /* iOS zooms the whole page when a text field under 16px takes focus */
+  textarea, select,
+  input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=button]):not([type=submit]){
+    font-size: 16px !important;
+  }
+  /* no 300ms double-tap wait, no long-press callout on controls */
+  button, a, summary, label,
+  [data-act], [data-pick], [data-grade], [data-conf], [data-lesson], [data-stage], [data-goto], [data-exam]{
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+  }
+  button{ -webkit-user-select: none; user-select: none; }
+  /* 44pt minimum on everything the study loop asks you to tap */
+  .qc-btn, .qc-opt, .qc-lrow, .qc-stage-b, #qc-bar button, #qc-retb,
+  .qc-grades button, .qc-conf button{ min-height: 44px; }
+  .qc-stagehead{ min-height: 48px; }
+  /* momentum scrolling inside the panes */
+  .qc-side, .qc-stagelist, #qr-root .toc, #qr-root .sb-nav{ -webkit-overflow-scrolling: touch; }
+  /* text stays selectable and copyable where it is actually text */
+  p, li, td, th, dd, dt, pre, code, .qc-q, .qc-a{ -webkit-touch-callout: default; }
+}
+
+/* --- landscape on a notched phone --- */
+@media (pointer: coarse) and (orientation: landscape){
+  #qc-bar, #qc-ret, #qc-store-warn{
+    left: calc(50% + (var(--sa-l) - var(--sa-r)) / 2);
+  }
+}
+
+/* --- The Reference is 880,000px of laid-out text. Rendering all of it on the
+       first tap froze a phone for about five seconds; skipping the offscreen
+       volumes makes that switch immediate. The per-volume intrinsic sizes below
+       are measured at phone width, so the scrollbar stays honest before a
+       volume has ever been rendered. Ignored on iOS 17, which simply keeps the
+       old behaviour. --- */
+@supports (content-visibility: auto){
+  #qr-root main.col > section.vol{ content-visibility: auto; }
+  #qr-root main.col>section.vol:nth-child(2){contain-intrinsic-size:auto 28759px}
+  #qr-root main.col>section.vol:nth-child(3){contain-intrinsic-size:auto 56605px}
+  #qr-root main.col>section.vol:nth-child(4){contain-intrinsic-size:auto 10980px}
+  #qr-root main.col>section.vol:nth-child(5){contain-intrinsic-size:auto 63347px}
+  #qr-root main.col>section.vol:nth-child(6){contain-intrinsic-size:auto 12348px}
+  #qr-root main.col>section.vol:nth-child(7){contain-intrinsic-size:auto 33024px}
+  #qr-root main.col>section.vol:nth-child(8){contain-intrinsic-size:auto 9110px}
+  #qr-root main.col>section.vol:nth-child(9){contain-intrinsic-size:auto 14720px}
+  #qr-root main.col>section.vol:nth-child(10){contain-intrinsic-size:auto 11269px}
+  #qr-root main.col>section.vol:nth-child(11){contain-intrinsic-size:auto 11122px}
+  #qr-root main.col>section.vol:nth-child(12){contain-intrinsic-size:auto 15551px}
+  #qr-root main.col>section.vol:nth-child(13){contain-intrinsic-size:auto 15449px}
+  #qr-root main.col>section.vol:nth-child(14){contain-intrinsic-size:auto 10490px}
+  #qr-root main.col>section.vol:nth-child(15){contain-intrinsic-size:auto 9976px}
+  #qr-root main.col>section.vol:nth-child(16){contain-intrinsic-size:auto 13075px}
+  #qr-root main.col>section.vol:nth-child(17){contain-intrinsic-size:auto 10585px}
+  #qr-root main.col>section.vol:nth-child(18){contain-intrinsic-size:auto 17161px}
+  #qr-root main.col>section.vol:nth-child(19){contain-intrinsic-size:auto 12592px}
+  #qr-root main.col>section.vol:nth-child(20){contain-intrinsic-size:auto 17787px}
+  #qr-root main.col>section.vol:nth-child(21){contain-intrinsic-size:auto 8077px}
+  #qr-root main.col>section.vol:nth-child(22){contain-intrinsic-size:auto 10780px}
+  #qr-root main.col>section.vol:nth-child(23){contain-intrinsic-size:auto 12299px}
+  #qr-root main.col>section.vol:nth-child(24){contain-intrinsic-size:auto 20733px}
+  #qr-root main.col>section.vol:nth-child(25){contain-intrinsic-size:auto 19904px}
+  #qr-root main.col>section.vol:nth-child(26){contain-intrinsic-size:auto 10902px}
+  #qr-root main.col>section.vol:nth-child(27){contain-intrinsic-size:auto 8882px}
+  #qr-root main.col>section.vol:nth-child(28){contain-intrinsic-size:auto 10844px}
+  #qr-root main.col>section.vol:nth-child(29){contain-intrinsic-size:auto 16248px}
+  #qr-root main.col>section.vol:nth-child(30){contain-intrinsic-size:auto 9257px}
+  #qr-root main.col>section.vol:nth-child(31){contain-intrinsic-size:auto 11698px}
+  #qr-root main.col>section.vol:nth-child(32){contain-intrinsic-size:auto 13174px}
+  #qr-root main.col>section.vol:nth-child(33){contain-intrinsic-size:auto 13339px}
+  #qr-root main.col>section.vol:nth-child(34){contain-intrinsic-size:auto 10729px}
+  #qr-root main.col>section.vol:nth-child(35){contain-intrinsic-size:auto 14941px}
+  #qr-root main.col>section.vol:nth-child(36){contain-intrinsic-size:auto 9599px}
+  #qr-root main.col>section.vol:nth-child(37){contain-intrinsic-size:auto 11863px}
+  #qr-root main.col>section.vol:nth-child(38){contain-intrinsic-size:auto 18867px}
+  #qr-root main.col>section.vol:nth-child(39){contain-intrinsic-size:auto 9891px}
+  #qr-root main.col>section.vol:nth-child(40){contain-intrinsic-size:auto 8719px}
+  #qr-root main.col>section.vol:nth-child(41){contain-intrinsic-size:auto 10610px}
+  #qr-root main.col>section.vol:nth-child(42){contain-intrinsic-size:auto 9006px}
+  #qr-root main.col>section.vol:nth-child(43){contain-intrinsic-size:auto 11141px}
+  #qr-root main.col>section.vol:nth-child(44){contain-intrinsic-size:auto 7912px}
+  #qr-root main.col>section.vol:nth-child(45){contain-intrinsic-size:auto 14128px}
+  #qr-root main.col>section.vol:nth-child(46){contain-intrinsic-size:auto 10424px}
+  #qr-root main.col>section.vol:nth-child(47){contain-intrinsic-size:auto 21165px}
+  #qr-root main.col>section.vol:nth-child(48){contain-intrinsic-size:auto 35083px}
+  #qr-root main.col>section.vol:nth-child(49){contain-intrinsic-size:auto 34189px}
+  #qr-root main.col>section.vol:nth-child(50){contain-intrinsic-size:auto 28992px}
+  #qr-root main.col>section.vol:nth-child(51){contain-intrinsic-size:auto 15199px}
+  #qr-root main.col>section.vol:nth-child(52){contain-intrinsic-size:auto 10139px}
+  #qr-root main.col>section.vol:nth-child(53){contain-intrinsic-size:auto 24813px}
+  #qr-root main.col>section.vol:nth-child(54){contain-intrinsic-size:auto 19989px}
+}
+
+
+/* ============================================================
+   LESSON UNITS — the scaffold that makes each section a lesson
+   Each h3 and its run of prose is now one <article class="lesson">.
+   The head states what the lesson is for before you read it; the
+   foot is where you find out whether it stuck.
+   ============================================================ */
+
+#qr-root article.lesson{ position: relative; scroll-margin-top: 74px; }
+
+/* ---------- the head: objective, cost, dependencies ---------- */
+#qr-root .les-head{
+  margin: .5rem auto 1.35rem;
+  padding: .1rem 0 .1rem .95rem;
+  border-left: 2px solid var(--accent-line);
+}
+#qr-root .les-obj{
+  margin: 0 0 .45rem;
+  font-size: .97em;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+#qr-root .les-obj-k{
+  font-family: var(--sans);
+  font-size: .63rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-right: .55em;
+  white-space: nowrap;
+}
+#qr-root .les-facts{
+  list-style: none;
+  margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap;
+  gap: .25rem .85rem;
+  font-family: var(--sans);
+  font-size: .735rem;
+  line-height: 1.5;
+  color: var(--ink-3);
+}
+#qr-root .les-facts li{ margin: 0; }
+#qr-root .les-facts .lf-of{ opacity: .62; }
+#qr-root .les-facts .lf-k{
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  font-size: .93em;
+  opacity: .8;
+  margin-right: .12em;
+}
+#qr-root .les-facts a{
+  color: var(--ink-2);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule-strong);
+  padding-bottom: 1px;
+  font-variant-numeric: tabular-nums;
+}
+#qr-root .les-facts a:hover{ color: var(--accent); border-bottom-color: var(--accent); }
+#qr-root .les-facts .lf-more{ opacity: .6; }
+#qr-root .les-facts .lf-m{ font-variant-numeric: tabular-nums; }
+
+/* a passed lesson reads as passed while you scroll past it */
+#qr-root article.lesson.is-done > .les-head{ border-left-color: var(--pos); }
+#qr-root article.lesson.is-done .les-obj-k{ color: var(--pos); }
+#qr-root article.lesson.is-done .les-obj-k::after{ content: " \2713"; }
+
+/* ---------- the foot: retrieval, then the check ---------- */
+#qr-root .les-foot{ margin: 1.5rem auto 2.1rem; }
+#qr-root .les-check-b{
+  font-family: var(--sans);
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--ink-2);
+  background: var(--surface-2);
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--r-md);
+  padding: .55rem 1rem;
+  cursor: pointer;
+  min-height: 40px;
+  display: inline-flex; align-items: baseline; gap: .1rem;
+  transition: background .12s, color .12s, border-color .12s;
+}
+#qr-root .les-check-b:hover{ background: var(--accent-soft); border-color: var(--accent-line); color: var(--ink); }
+/* inline-flex collapses the leading space in the label, so put it back */
+#qr-root .les-check-b .lcb-sub{ font-weight: 400; color: var(--ink-3); margin-left: .4em; }
+#qr-root .les-foot.is-open > .les-check-b{ display: none; }
+
+#qr-root .lf-panel{
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+#qr-root .lf-hd{
+  display: flex; align-items: center; gap: .6rem;
+  padding: .6rem .95rem;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--sans); font-size: .7rem;
+  letter-spacing: .09em; text-transform: uppercase;
+  color: var(--ink-3);
+}
+#qr-root .lf-hd .lf-step{ color: var(--accent); font-weight: 700; }
+#qr-root .lf-hd .lf-x{
+  margin-left: auto; border: 0; background: none; cursor: pointer;
+  color: var(--ink-3); font-size: 1.1rem; line-height: 1;
+  padding: .2rem .35rem; border-radius: var(--r-sm);
+}
+#qr-root .lf-hd .lf-x:hover{ background: var(--surface-3); color: var(--ink); }
+#qr-root .lf-bd{ padding: 1rem 1.1rem 1.1rem; }
+#qr-root .lf-q{ margin: 0 0 .85rem; font-size: 1.02em; line-height: 1.55; }
+#qr-root .lf-a{
+  margin: .3rem 0 .9rem; padding: .75rem .9rem;
+  background: var(--surface-2); border-radius: var(--r-md);
+  border-left: 2px solid var(--accent-line);
+}
+#qr-root .lf-a > :first-child{ margin-top: 0; }
+#qr-root .lf-a > :last-child{ margin-bottom: 0; }
+#qr-root .lf-att{
+  width: 100%; box-sizing: border-box;
+  font: inherit; font-size: .95em;
+  color: var(--ink); background: var(--paper);
+  border: 1px solid var(--rule-strong); border-radius: var(--r-md);
+  padding: .6rem .75rem; min-height: 4.4em; resize: vertical;
+  margin-bottom: .8rem;
+}
+#qr-root .lf-att:focus{ outline: 2px solid var(--accent); outline-offset: 1px; }
+
+#qr-root .lf-row{ display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+#qr-root .lf-b{
+  font-family: var(--sans); font-size: .8rem; font-weight: 600;
+  border: 1px solid var(--rule-strong); background: var(--surface);
+  color: var(--ink-2); border-radius: var(--r-md);
+  padding: .5rem .9rem; cursor: pointer; min-height: 40px;
+}
+#qr-root .lf-b:hover{ background: var(--surface-2); color: var(--ink); }
+#qr-root .lf-b.pri{ background: var(--accent); border-color: var(--accent); color: #fff; }
+:root[data-theme="dark"] #qr-root .lf-b.pri,
+:root:not([data-theme="light"]) #qr-root .lf-b.pri{ color: #171205; }
+#qr-root .lf-b.pri:hover{ background: var(--accent-hi); border-color: var(--accent-hi); }
+
+/* grade buttons reuse the study system's four-way scale */
+#qr-root .lf-grades{ display: flex; flex-wrap: wrap; gap: .4rem; }
+#qr-root .lf-grades button{
+  font-family: var(--sans); font-size: .76rem; font-weight: 600;
+  border: 1px solid var(--rule-strong); background: var(--surface);
+  color: var(--ink-2); border-radius: var(--r-md);
+  padding: .45rem .8rem; cursor: pointer; min-height: 40px;
+}
+#qr-root .lf-grades button:hover{ border-color: var(--accent); color: var(--ink); }
+#qr-root .lf-grades button[data-g="0"]:hover{ border-color: var(--neg); color: var(--neg); }
+#qr-root .lf-grades button[data-g="3"]:hover{ border-color: var(--pos); color: var(--pos); }
+
+/* multiple-choice options */
+#qr-root .lf-opts{ list-style: none; margin: 0 0 .85rem; padding: 0; display: grid; gap: .4rem; }
+#qr-root .lf-opt{
+  display: flex; gap: .6rem; align-items: flex-start;
+  width: 100%; text-align: left;
+  font: inherit; font-size: .96em; line-height: 1.5;
+  background: var(--surface); color: var(--ink-2);
+  border: 1px solid var(--rule-strong); border-radius: var(--r-md);
+  padding: .6rem .75rem; cursor: pointer; min-height: 44px;
+}
+#qr-root .lf-opt:hover:not([disabled]){ border-color: var(--accent-line); background: var(--accent-soft); color: var(--ink); }
+#qr-root .lf-opt .lf-key{
+  flex: 0 0 auto; font-family: var(--sans); font-size: .72rem; font-weight: 700;
+  color: var(--ink-3); border: 1px solid var(--rule-strong); border-radius: var(--r-sm);
+  min-width: 1.5em; text-align: center; padding: .1em .25em; margin-top: .1em;
+}
+#qr-root .lf-opt.is-right{ border-color: var(--pos); background: var(--pos-soft); color: var(--ink); }
+#qr-root .lf-opt.is-right .lf-key{ border-color: var(--pos); color: var(--pos); }
+#qr-root .lf-opt.is-wrong{ border-color: var(--neg); background: var(--neg-soft); color: var(--ink); }
+#qr-root .lf-opt.is-wrong .lf-key{ border-color: var(--neg); color: var(--neg); }
+#qr-root .lf-opt[disabled]{ cursor: default; }
+
+#qr-root .lf-why{
+  margin: 0 0 .9rem; padding: .7rem .85rem;
+  border-radius: var(--r-md); font-size: .95em; line-height: 1.55;
+  background: var(--info-soft); border-left: 2px solid var(--info); color: var(--ink-2);
+}
+#qr-root .lf-why.ok{ background: var(--pos-soft); border-left-color: var(--pos); }
+#qr-root .lf-why.no{ background: var(--neg-soft); border-left-color: var(--neg); }
+#qr-root .lf-tick{
+  font-family: var(--sans); font-size: .7rem; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--ink-3); margin: 0 0 .5rem;
+}
+#qr-root .lf-done{
+  display: flex; flex-wrap: wrap; gap: .6rem; align-items: center;
+  font-family: var(--sans); font-size: .82rem; color: var(--ink-2);
+}
+#qr-root .lf-done b{ color: var(--pos); }
+#qr-root .lf-keys{
+  margin: .8rem 0 0; font-family: var(--sans); font-size: .7rem; color: var(--ink-3);
+}
+#qr-root .lf-keys kbd{
+  font-family: var(--mono); font-size: .95em;
+  border: 1px solid var(--rule-strong); border-bottom-width: 2px;
+  border-radius: var(--r-sm); padding: .05em .35em; margin: 0 .1em; color: var(--ink-2);
+}
+
+/* ---------- the mode bar must stop sitting on the prose ---------- */
+#qc-bar{
+  transition: transform .22s ease, opacity .22s ease;
+  will-change: transform;
+}
+#qc-bar.qc-bar-away{
+  transform: translateX(-50%) translateY(calc(100% + var(--sa-b, 0px) + 20px));
+  opacity: 0;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce){
+  #qc-bar{ transition: none; }
+  #qc-bar.qc-bar-away{ transform: translateX(-50%); opacity: .28; }
+}
+
+/* ---------- narrow screens ---------- */
+@media (max-width: 700px){
+  #qr-root .les-head{ padding-left: .75rem; margin-bottom: 1.15rem; }
+  #qr-root .les-facts{ gap: .2rem .7rem; font-size: .715rem; }
+  #qr-root .lf-bd{ padding: .85rem .8rem .9rem; }
+}
+
+/* ---------- print: keep the objective, drop the machinery ---------- */
+@media print{
+  #qr-root article.lesson{ break-inside: auto; }
+  #qr-root .les-head{ border-left: 1px solid #999; }
+  #qr-root .les-obj-k{ color: #000; }
+  #qr-root .les-facts{ color: #444; }
+  #qr-root .les-foot{ display: none; }
+  #qc-bar{ display: none; }
+}
+
+
+
+/* ==========================================================================
+   REFINEMENT LAYER
+   Everything below is additive. It changes no existing rule; it only supplies
+   behaviour the structure was missing. Grouped by the problem it solves.
+   ========================================================================== */
+
+:root{
+  --tw-cue:      rgba(20,18,14,.22);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --tw-cue: rgba(0,0,0,.65); }
+}
+:root[data-theme="dark"]{ --tw-cue: rgba(0,0,0,.65); }
+
+
+/* --------------------------------------------------------------------------
+   1. TABLES THAT DO NOT LOSE THEIR RIGHT-HAND COLUMNS
+   Every table now sits in a scroll wrapper. The wrapper only becomes a
+   focusable region when it is actually scrolling, so keyboard users get a tab
+   stop exactly where there is something to scroll and nowhere else.
+   -------------------------------------------------------------------------- */
+#qr-root .tw{ position: relative; overscroll-behavior-x: contain; }
+
+#qr-root .tw.is-scroll:not(.at-end){   box-shadow: inset -15px 0 12px -12px var(--tw-cue); }
+#qr-root .tw.is-scroll.at-end{         box-shadow: inset  15px 0 12px -12px var(--tw-cue); }
+#qr-root .tw.is-scroll:not(.at-end):not(.at-start){
+  box-shadow: inset -15px 0 12px -12px var(--tw-cue),
+              inset  15px 0 12px -12px var(--tw-cue);
+}
+#qr-root .tw:focus-visible{
+  outline: 2px solid var(--accent); outline-offset: 2px;
+}
+
+/* the row-label column holds still while the rest of the table slides */
+#qr-root .tw.stick-col{ background: var(--surface); }
+#qr-root .tw.stick-col thead th:first-child,
+#qr-root .tw.stick-col tbody td:first-child{
+  position: sticky; left: 0; z-index: 2;
+}
+#qr-root .tw.stick-col tbody td:first-child{ background: var(--surface); }
+#qr-root .tw.stick-col thead th:first-child{ background: var(--surface-2); z-index: 3; }
+#qr-root .tw.stick-col tbody tr:hover td:first-child{ background: var(--surface-2); }
+/* Once it is holding still while the rest slides behind it, the pinned
+   column needs an edge you can actually see, or the half-covered column
+   beside it just reads as broken text. The table is border-collapse:
+   collapse, which drops box-shadow on cells, so the edge is drawn as a
+   pseudo-element on the sticky cell itself. */
+#qr-root .tw.stick-col thead th:first-child::after,
+#qr-root .tw.stick-col tbody td:first-child::after{
+  content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 1px;
+  background: var(--rule-strong);
+  box-shadow: 7px 0 9px -3px var(--tw-cue);
+  opacity: 0; transition: opacity .18s ease; pointer-events: none;
+}
+#qr-root .tw.stick-col:not(.at-start) thead th:first-child::after,
+#qr-root .tw.stick-col:not(.at-start) tbody td:first-child::after{ opacity: 1; }
+@media (prefers-reduced-motion: reduce){
+  #qr-root .tw.stick-col thead th:first-child::after,
+  #qr-root .tw.stick-col tbody td:first-child::after{ transition: none; }
+}
+
+/* a table you can scroll says so, once, quietly */
+#qr-root .tw-hint{
+  position: absolute; top: 6px; right: 8px; z-index: 4;
+  font-family: var(--sans); font-size: 10px; font-weight: 700;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--ink-3); background: var(--surface);
+  border: 1px solid var(--rule); border-radius: 999px;
+  padding: 2px 8px; pointer-events: none;
+  opacity: 1; transition: opacity .25s ease;
+}
+#qr-root .tw.at-scrolled .tw-hint{ opacity: 0; }
+@media (prefers-reduced-motion: reduce){ #qr-root .tw-hint{ transition: none; } }
+
+
+/* --------------------------------------------------------------------------
+   2. YOU CAN ALWAYS GET TO THE NEXT LESSON
+   368 lessons had no way forward except the sidebar or a guess. Every lesson
+   now ends with where it sits, what came before and what comes next.
+   -------------------------------------------------------------------------- */
+#qr-root .lesnav{
+  margin: 1.6rem auto 2.6rem;
+  padding-top: .95rem;
+  border-top: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: stretch;
+  gap: .6rem 1rem;
+  font-family: var(--sans);
+}
+#qr-root .lesnav-a{
+  display: flex; flex-direction: column; gap: .18rem;
+  min-width: 0; text-decoration: none; color: var(--ink-2);
+  padding: .5rem .7rem; margin: -.5rem -.7rem;
+  border-radius: var(--r-md);
+  transition: background .15s ease;
+}
+#qr-root .lesnav-a:hover{ background: var(--surface-2); color: var(--ink); }
+#qr-root .lesnav-a:focus-visible{ outline: 2px solid var(--accent); outline-offset: 1px; }
+#qr-root .lesnav-next{ text-align: right; grid-column: 3; align-items: flex-end; }
+#qr-root .lesnav-prev{ grid-column: 1; align-items: flex-start; }
+#qr-root .lesnav-k{
+  font-size: .655rem; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+#qr-root .lesnav-t{
+  font-size: .78rem; line-height: 1.35; font-weight: 600; color: inherit;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+#qr-root .lesnav-t em{ font-style: normal; color: var(--ink-3); font-weight: 700; }
+#qr-root .lesnav-pos{
+  grid-column: 2; align-self: center; text-align: center;
+  font-size: .69rem; line-height: 1.45; color: var(--ink-3);
+  font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+#qr-root .lesnav-pos b{ color: var(--ink-2); font-weight: 600; }
+#qr-root .lesnav-bar{
+  display: block; width: 100%; height: 3px; margin-top: .3rem;
+  background: var(--surface-3); border-radius: 999px; overflow: hidden;
+}
+#qr-root .lesnav-bar i{ display: block; height: 100%; background: var(--accent-line); }
+@media (max-width: 640px){
+  #qr-root .lesnav{ grid-template-columns: 1fr 1fr; }
+  #qr-root .lesnav-pos{ grid-column: 1 / -1; grid-row: 1; margin-bottom: .1rem; }
+  #qr-root .lesnav-next{ grid-column: 2; }
+}
+#qr-root .lesnav-a.is-end{ visibility: hidden; pointer-events: none; }
+
+
+/* --------------------------------------------------------------------------
+   3. YOU CAN SEE WHERE A LINK PUT YOU
+   In a document of 368 sections, following a cross-reference used to land you
+   in undifferentiated prose. The destination now says so, briefly.
+   -------------------------------------------------------------------------- */
+#qr-root .qc-landed{
+  animation: qc-land 2.4s ease-out 1;
+  border-radius: var(--r-sm);
+  padding-inline: .4rem; margin-inline: -.4rem;
+}
+@keyframes qc-land{
+  0%, 50% { background: var(--accent-soft); }
+  100%    { background: transparent; }
+}
+@media (prefers-reduced-motion: reduce){
+  #qr-root .qc-landed{ animation: none; box-shadow: inset 3px 0 0 var(--accent); }
+}
+
+
+/* --------------------------------------------------------------------------
+   4. THE MODE BAR STAYS OUT OF THE TEXT
+   It used to slide away while you scrolled and come back 700ms after you
+   stopped — which is exactly when you were reading under it.
+   -------------------------------------------------------------------------- */
+#qc-bar:focus-within{ transform: translateX(-50%) !important; opacity: 1 !important; pointer-events: auto !important; }
+
+
+/* keep the stage meter to a sane width beside the two lesson links */
+#qr-root .lesnav-bar{ max-width: 92px; margin-inline: auto; }
+
+
+/* --------------------------------------------------------------------------
+   5. THE SHORTCUTS ARE DISCOVERABLE
+   The file has three modes with about fifteen keys between them and no way to
+   find any of them. "?" already had a handler; it pointed at a panel that was
+   never built. This is that panel.
+   -------------------------------------------------------------------------- */
+#qc-keys{
+  position: fixed; inset: 0; z-index: 9500;
+  display: none; align-items: center; justify-content: center;
+  padding: 20px;
+  background: rgba(12,10,7,.44);
+  -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px);
+}
+#qc-keys.on{ display: flex; }
+#qc-keys .kx{
+  background: var(--surface); color: var(--ink);
+  border: 1px solid var(--rule-strong); border-radius: var(--r-lg);
+  box-shadow: var(--shadow-md);
+  font-family: var(--sans);
+  width: min(660px, 100%); max-height: min(80vh, 640px); overflow: auto;
+  padding: 20px 22px 18px;
+}
+#qc-keys h2{
+  margin: 0 0 2px; font-size: 15px; letter-spacing: .02em; color: var(--ink);
+}
+#qc-keys .kxsub{ margin: 0 0 16px; font-size: 12px; color: var(--ink-3); }
+#qc-keys .kxg{ margin: 0 0 15px; }
+#qc-keys .kxg > h3{
+  margin: 0 0 7px; font-size: 10.5px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--ink-3);
+}
+#qc-keys .kxg.now > h3{ color: var(--accent); }
+#qc-keys dl{ margin: 0; display: grid; grid-template-columns: 56px 1fr; gap: 5px 14px; align-items: baseline; }
+#qc-keys dt{ margin: 0; white-space: nowrap; }
+#qc-keys dd{ margin: 0; font-size: 12.5px; color: var(--ink-2); line-height: 1.45; }
+#qc-keys kbd{
+  font-family: var(--mono); font-size: 11px; line-height: 1;
+  background: var(--surface-2); color: var(--ink);
+  border: 1px solid var(--rule-strong); border-bottom-width: 2px;
+  border-radius: 4px; padding: 3px 6px; display: inline-block; min-width: 20px; text-align: center;
+}
+#qc-keys .kxclose{
+  margin-top: 4px; font: inherit; font-size: 12px; font-weight: 600;
+  background: var(--surface-2); color: var(--ink-2);
+  border: 1px solid var(--rule-strong); border-radius: var(--r-md);
+  padding: 7px 13px; cursor: pointer; min-height: 40px;
+}
+#qc-keys .kxclose:hover{ color: var(--ink); }
+#qc-keys .kxclose:focus-visible{ outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 560px){ #qc-keys .kx{ padding: 16px; } }
+
+
+/* --------------------------------------------------------------------------
+   6. PRINT — the additions are screen furniture, not paper
+   -------------------------------------------------------------------------- */
+@media print{
+  #qr-root .lesnav, #qr-root .tw-hint, #qc-keys{ display: none !important; }
+  #qr-root .qc-landed{ animation: none; background: transparent; }
+  #qr-root .tw{ overflow: visible; box-shadow: none; }
+  #qr-root .tw.stick-col thead th:first-child,
+  #qr-root .tw.stick-col tbody td:first-child{ position: static; box-shadow: none; }
+}
