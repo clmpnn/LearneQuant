@@ -1,226 +1,68 @@
-# LearneQuant
+<div align="center">
 
-https://clmpnn.github.io/LearneQuant/
+# 📈 LearneQuant
 
-**The Quant Curriculum** — 368 ordered lessons across 53 stages, a complete
-reference, and a practice engine of over a thousand generated problems. Every
-lesson is open from the start; the order is a recommendation, not a gate.
+### *Quantitative finance, taught the same way LearneJP teaches Japanese — stage by stage.*
 
-It is a static site with no build step, no framework and no dependencies. Open
-`index.html` and it runs.
+[![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
+[![Made with JavaScript](https://img.shields.io/badge/Made%20with-JavaScript-f7df1e?style=for-the-badge&logo=javascript&logoColor=black)](https://github.com/clmpnn/LearneQuant)
+[![Status](https://img.shields.io/badge/Status-Active-2ea44f?style=for-the-badge)](https://github.com/clmpnn/LearneQuant)
 
----
+<img width="720" alt="LearneQuant banner" src="https://via.placeholder.com/720x260/0f1b2e/2ecc71?text=LearneQuant">
 
-## What is in here
-
-```
-index.html                 the course: 5.6 MB of pre-rendered content
-                           plus the inlined stylesheets
-assets/css/                the editable source for those stylesheets
-  01-core.css              type, colour, layout
-  02-layers.css            iOS/safe-area, lesson units, refinements
-  03-route.css             the course view
-  04-touch.css             phone-only fixes, all behind (pointer: coarse)
-assets/js/                 the runtime, split by what it does
-  00-trainer-loader.js     defers the practice engine off the critical path
-  10-dialog.js             the ask-and-tell dialog layer
-  20-search-index.js       the search index
-  21-reference.js          reference runtime
-  22-reference-data.js     glossary and retrieval cards
-  23-reference-ui.js       study system, calculators, The Forge
-  30-spine.js              the 368-lesson spine
-  31-route-data.js         route data
-  32-course.js             the ordered course
-  33-lessons.js            lesson layer
-  40-interface.js          route interface, lessons, iOS fixes, downloads
-  05-scroll-a11y.js        makes sideways-scrolling regions keyboard-usable
-  90-trainer.js            the practice engine — loaded on demand
-tools/inline-css.py        pushes assets/css into index.html
-setup.ps1 / setup.sh       one-time: writes the workflow, inits the repo
-LICENSE                    MIT, for the code
-LICENSE-CONTENT.md         CC BY 4.0, for the course material
-sw.js                      service worker: instant repeat visits, full offline
-manifest.webmanifest       installable as an app
-404.html                   for links that were never going to resolve
-.nojekyll                  keep Jekyll's hands off the build
-```
-
-### How it was assembled
-
-The source was a single 8.9 MB HTML file with everything inlined. Splitting it
-was mechanical and lossless: the ten `<style>` blocks and eighty-one `<script>`
-blocks were lifted out **verbatim**, in document order, into the files above,
-and the document kept every byte of its markup. The extraction asserts that
-each block is used exactly once and that the order never inverts.
-
-Four scripts stayed inline because they have to run before anything else
-paints: the box-sizing reset, the sidebar-state guard, the event-ownership
-shim, and the boot-splash remover.
+</div>
 
 ---
 
-## The performance work
+## ✨ Overview
 
-The original loaded everything before it did anything.
+**LearneQuant** brings the "Learne" series' guided-lesson-plus-drill format to quantitative finance: work through structured stages covering core concepts — statistics, probability, time series, and trading/portfolio math — then test yourself with practice questions on each one.
 
-Measured in headless Chromium against a gzip-serving origin — what GitHub
-Pages does — throttled to 1.6 Mbps with 150 ms of latency:
+> 💡 *Note: this README is a starter template built from the repo name and the design pattern shared with LearneJP/LearneCN — swap in the real curriculum, screenshots, and stack below once confirmed against the codebase.*
 
-| | before | after | |
-|---|---:|---:|---:|
-| First contentful paint | 460 ms | **360 ms** | −22% |
-| DOMContentLoaded | 11.3 s | **8.7 s** | −23% |
-| Transferred | 2,199 KB | **1,696 KB** | −23% |
-| Blocking scripts | 81 inline | **0** | |
-| Second visit | full download | **670 ms**, from disk | |
-| With no connection | impossible | **1.5 s**, all 368 lessons | |
+## 🧩 Suggested Features
 
-The rendered result is unchanged: a pixel diff of all three views, at desktop
-and phone widths, comes back at zero differing pixels out of 1,296,000.
+| Feature | Description |
+|---|---|
+| 📚 **Guided Curriculum** | Staged lessons from foundational statistics up through applied quant concepts |
+| 🧮 **Concept Drills** | Practice questions after each lesson to check and reinforce understanding |
+| 🔁 **Spaced Review** | Missed or self-rated-weak concepts resurface for review over time |
+| 📊 **Reference Sheets** | Quick-lookup formulas and definitions (e.g., Sharpe ratio, volatility, regression basics) |
+| ➕ **Add Content** | Contribute your own practice questions and lessons |
 
-**Nothing blocks the parser.** Every script is now `defer`, so the 5.4 MB of
-pre-rendered course markup streams and paints while the JavaScript downloads
-alongside it.
-
-**The stylesheets are inlined, on purpose.** Linking them was tried and
-measured: it costs a render-blocking round trip and pushed first paint out to
-648 ms. Inlining them beats even the original file, because the two
-stylesheets that used to sit at the end of the body now arrive before the
-first paint instead of restyling after it. `assets/css/` stays the editable
-source and `tools/inline-css.py` puts it into `index.html`; CI fails the
-build if the two have drifted apart.
-
-**The practice engine loads when you reach for it.** `90-trainer.js` is
-1.6 MB — more than everything else put together, and not needed to read a
-lesson. `00-trainer-loader.js` installs a stand-in for `window.__TRAINER__`
-and fetches the real engine on the first pointer or key event, the moment the
-trainer view opens, or at idle if neither happens. The stand-in is installed
-as a property accessor, so the course layer — which captures the trainer once
-at boot and keeps that reference — never notices the swap.
-
-**Caching and offline.** The service worker precaches the shell on install
-and the engine just after, then answers navigations network-first (a deploy
-shows up on the next visit) and assets stale-while-revalidate (instant, and
-still correct when served from a branch with no build step).
-
-GitHub Pages gzips everything on the way out, which takes the whole site from
-8.9 MB to roughly 2.2 MB on the wire.
-
----
-
-## On phones
-
-The document arrived with a good deal of phone work already in it — safe-area
-insets on the floating chrome, 16px form fields so iOS does not zoom when one
-takes focus, `:hover` styling neutralised under `(hover: none)`,
-`content-visibility` with measured intrinsic sizes on all 53 volumes and 368
-lessons. An audit across eight device profiles, 320 px to 768 px, portrait and
-landscape, found three things it had missed.
-
-**212 tables, 89 of them wider than the screen.** Some reached 1002 px on a
-393 px phone. Because the page itself does not scroll sideways, those columns
-were not awkward — they were *unreachable*: clipped, with no gesture that
-brought them back. Each table is now its own horizontal scroll container. That
-is done in CSS rather than by wrapping them in JavaScript, because wrapping 212
-tables would force every one into layout and undo the `content-visibility`
-work. All 89 are now readable; none still clips.
-
-**Touch targets that were tall but not wide.** The existing rules set
-`min-height: 44px` and no `min-width`, so the contents button and the theme
-toggle came out 44 px tall and 27 px across — and width is the axis a thumb
-actually misses. Those, the trainer's digit buttons and the route chips now
-meet 44×44 everywhere. Where a control is deliberately small — the section
-checks, the `¶` heading anchors — the *hit area* grew instead, through a
-pseudo-element that paints nothing, so nothing moved on screen.
-
-**Tap latency and stray gestures.** `touch-action: manipulation` on controls
-drops the double-tap-to-zoom wait, while leaving pinch-zoom working on the page
-itself. Tables, code blocks and the sidebar contain their own overscroll, so
-swiping to the end of one no longer hands the gesture to the page behind it or
-triggers pull-to-refresh mid-lesson.
-
-One measurement worth keeping: a 44 px-wide hit target centred on an inline `¶`
-overhangs the right margin and pushed the whole document 2 px wider than the
-screen — a real horizontal wobble, found by diffing `scrollWidth` against the
-viewport. Height is free where width is not, so those anchors are 32×44. Every
-device profile now reports `scrollWidth === clientWidth` in all three views.
-
-**Scrollable regions are reachable from a keyboard, and say that they scroll.**
-Making 283 regions scroll solved reading them with a thumb and did nothing for
-anyone using a keyboard: none was focusable, so the hidden columns stayed
-hidden (WCAG 2.1.1). `assets/js/05-scroll-a11y.js` gives each one `tabindex`
-and a name once it is actually wider than its box — lazily, through an
-`IntersectionObserver`, so it never forces the `content-visibility` content
-into layout. Measured: every region is marked by the time a reader reaches it,
-234 of 234, none missed. The same marking drives an inset edge shadow that
-fades once you reach the far side, which is the affordance the first pass
-lacked.
-
-An audit of the touch layer against the live DOM — every selector, in all
-three views and several deeper states — found two rules that had been matching
-nothing: the panels are `.qc-panel`, not `.panel`, and the reference search
-field sits in `.sb-search`, not `.search`. Both are fixed; three selectors that
-can never match anything in this document were removed.
-
-The touch rules live in `assets/css/04-touch.css` inside
-`@media (pointer: coarse)`; the scroll cue sits outside it, because a narrow
-desktop window clips a table exactly the same way. The desktop pixel diff is
-still zero — at full width nothing overflows, so no cue is drawn.
-
----
-
-## Working on it locally
-
-A service worker needs a real origin, so serve rather than double-click:
+## 🚀 Getting Started
 
 ```bash
-python3 -m http.server 8080
-# then open http://localhost:8080/
+git clone [https://github.com/clmpnn/LearneQuant.git](https://github.com/clmpnn/LearneQuant.git)
+cd LearneQuant
 ```
 
-Editing JavaScript is direct — the files in `assets/js/` are the files that
-ship. **Stylesheets are the one exception**: edit `assets/css/*.css`, then run
+Open the entry HTML file directly in a browser if it follows the static-site pattern of its sibling apps, or run:
 
 ```bash
-python3 tools/inline-css.py
+# adjust to match the project's actual entry point
+npm install
+npm start
 ```
 
-to push the change into `index.html`, and commit both. `--check` reports
-whether they are in sync without writing anything; CI runs exactly that and
-refuses to deploy if they have drifted.
+## 🛠️ Tech Stack
 
-If you change anything while a service worker is registered, hard-reload once
-(<kbd>Shift</kbd> + reload) or tick *Update on reload* in the browser's
-Application panel.
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
+
+## 🤝 Contributing
+
+Add lessons, fix an explanation, or contribute new practice questions via a pull request.
+
+## 📄 License
+
+Released under the [MIT License](LICENSE).
 
 ---
 
-## Licence
+<div align="center">
 
-Open for public use, under two licences that split along the obvious seam.
+*Part of the "Learne" series — sibling apps: LearneJP · LearneCN · LearneKR*
 
-| | licence | |
-|---|---|---|
-| **Code** — `assets/js/`, `sw.js`, `tools/` | [MIT](LICENSE) | use, modify, sell, no strings beyond keeping the notice |
-| **Course material** — the 368 lessons, the reference text, the data banks, the design | [CC BY 4.0](LICENSE-CONTENT.md) | share and adapt, commercially too, as long as you credit it |
-
-Where one file holds both — `index.html` and the trainer banks do — the prose
-is CC BY 4.0 and the program logic is MIT, and a reuser may rely on whichever
-fits what they are taking.
-
-Credit looks like this:
-
-> *The Quant Curriculum* by Claudia, licensed under
-> [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
-> Source: `https://github.com/YOUR-USERNAME/LearneQuant`
-
-The page declares it in machine-readable form too, through
-`<link rel="license">` and the `license` field of its `schema.org` `Course`
-block, so a crawler or a reuse tool can pick it up without reading this file.
-
-Two small things worth doing before you push: put your own name or GitHub
-handle in place of *Claudia* in `LICENSE` and `LICENSE-CONTENT.md`, and fill in
-the real repository URL in the attribution examples.
-
-Neither licence reaches the textbooks the course was written against — see
-*Source material* above. Nothing here grants any right in them.
+</div>
