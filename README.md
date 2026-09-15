@@ -18,8 +18,6 @@
 
 **LearneQuant** follows the same idea as [LearneJP](https://github.com/clmpnn/LearneJP) and [LearneCN](https://github.com/clmpnn/LearneCN): a free, staged, no-signup app for learning a hard subject — this time quantitative finance — through structured lessons and practice questions, in your browser.
 
-> ✏️ *Note: fill in your actual staged curriculum and quiz topics below — this section is a starting template based on the "Learne" series format.*
-
 ## ✨ Features
 
 - 🗺️ Staged learning path from fundamentals to advanced quant topics
