@@ -8,7 +8,7 @@
 <meta name="theme-color" content="#0e1014" media="(prefers-color-scheme: dark)">
 <meta name="robots" content="noindex">
 <title>Not here — The Quant Curriculum</title>
-<link rel="icon" href="__SITE_URL__assets/icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="https://clmpnn.github.io/LearneQuant/assets/icons/icon.svg" type="image/svg+xml">
 <style>
   :root{
     --paper:#fbfaf8; --ink:#16181d; --ink-3:#5f646d;
@@ -57,21 +57,7 @@
     to <code>/something</code> was never going to find anything.
   </p>
   <p>Go to the course and use the sidebar or the search box.</p>
-  <a class="btn" id="home" href="__SITE_URL__">Open the curriculum</a>
-<script>
-/* If the site URL was never stamped in (served straight from a branch,
-   or opened locally), work the repository root out of the path instead:
-   a project page lives one directory down, a user page at the root. */
-(function () {
-  var a = document.getElementById("home");
-  if (!a || a.getAttribute("href").indexOf("__SITE") !== 0) return;
-  var seg = location.pathname.split("/").filter(Boolean);
-  var root = (location.hostname.indexOf("github.io") > -1 && seg.length) ? "/" + seg[0] + "/" : "/";
-  a.href = root;
-  var ico = document.querySelector('link[rel="icon"]');
-  if (ico) ico.href = root + "assets/icons/icon.svg";
-})();
-</script>
+  <a class="btn" id="home" href="https://clmpnn.github.io/LearneQuant/">Open the curriculum</a>
 </main>
 </body>
 </html>

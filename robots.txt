@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: __SITE_URL__sitemap.xml
+Sitemap: https://clmpnn.github.io/LearneQuant/sitemap.xml

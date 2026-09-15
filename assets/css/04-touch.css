@@ -199,22 +199,22 @@
    script adds matters most where there is a keyboard.
    ========================================================================== */
 .qc-scrollx {
-  box-shadow: inset -14px 0 12px -12px rgba(20, 18, 14, .22);
+  /* The theme sets only this colour. An earlier version re-declared the whole
+     box-shadow per theme, and `:root:not([data-theme="light"]) .qc-scrollx`
+     (0,3,0) outranked `.qc-scrollx.qc-scrollx-end` (0,2,0) — so in dark mode
+     the cue never cleared when you reached the end. One shadow declaration,
+     one override, no cascade to lose. */
+  --qc-edge: rgba(20, 18, 14, .22);
+  box-shadow: inset -14px 0 12px -12px var(--qc-edge);
   transition: box-shadow .18s ease;
   scroll-behavior: smooth;
 }
 .qc-scrollx.qc-scrollx-end { box-shadow: none; }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .qc-scrollx {
-    box-shadow: inset -14px 0 12px -12px rgba(0, 0, 0, .55);
-  }
+  :root:not([data-theme="light"]) .qc-scrollx { --qc-edge: rgba(0, 0, 0, .55); }
 }
-:root[data-theme="dark"] .qc-scrollx {
-  box-shadow: inset -14px 0 12px -12px rgba(0, 0, 0, .55);
-}
-:root[data-theme="dark"] .qc-scrollx.qc-scrollx-end,
-:root:not([data-theme="light"]) .qc-scrollx.qc-scrollx-end { box-shadow: none; }
+:root[data-theme="dark"] .qc-scrollx { --qc-edge: rgba(0, 0, 0, .55); }
 
 /* A focusable region needs a visible focus ring, and the document's own
    :focus-visible styling does not reach these because they are not controls. */

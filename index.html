@@ -1982,22 +1982,22 @@ body{
    script adds matters most where there is a keyboard.
    ========================================================================== */
 .qc-scrollx {
-  box-shadow: inset -14px 0 12px -12px rgba(20, 18, 14, .22);
+  /* The theme sets only this colour. An earlier version re-declared the whole
+     box-shadow per theme, and `:root:not([data-theme="light"]) .qc-scrollx`
+     (0,3,0) outranked `.qc-scrollx.qc-scrollx-end` (0,2,0) — so in dark mode
+     the cue never cleared when you reached the end. One shadow declaration,
+     one override, no cascade to lose. */
+  --qc-edge: rgba(20, 18, 14, .22);
+  box-shadow: inset -14px 0 12px -12px var(--qc-edge);
   transition: box-shadow .18s ease;
   scroll-behavior: smooth;
 }
 .qc-scrollx.qc-scrollx-end { box-shadow: none; }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .qc-scrollx {
-    box-shadow: inset -14px 0 12px -12px rgba(0, 0, 0, .55);
-  }
+  :root:not([data-theme="light"]) .qc-scrollx { --qc-edge: rgba(0, 0, 0, .55); }
 }
-:root[data-theme="dark"] .qc-scrollx {
-  box-shadow: inset -14px 0 12px -12px rgba(0, 0, 0, .55);
-}
-:root[data-theme="dark"] .qc-scrollx.qc-scrollx-end,
-:root:not([data-theme="light"]) .qc-scrollx.qc-scrollx-end { box-shadow: none; }
+:root[data-theme="dark"] .qc-scrollx { --qc-edge: rgba(0, 0, 0, .55); }
 
 /* A focusable region needs a visible focus ring, and the document's own
    :focus-visible styling does not reach these because they are not controls. */
@@ -2089,6 +2089,18 @@ body{
 <meta name="twitter:description" content="368 ordered lessons across 53 stages, a complete reference, and a practice engine of over a thousand generated problems.">
 <meta name="twitter:image" content="__SITE_URL__assets/img/og.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Course","name":"The Quant Curriculum","url":"__SITE_URL__","description":"368 ordered lessons across 53 stages, each with an objective, retrieval cards and an objective check, drawing on a complete reference and a practice engine of over a thousand generated problems.","inLanguage":"en","isAccessibleForFree":true,"license":"https://creativecommons.org/licenses/by/4.0/","copyrightYear":2026,"learningResourceType":["Course","Reference","Practice problems"],"teaches":["Quantitative trading","Derivatives pricing","Portfolio construction","Market microstructure","Statistical inference","Machine learning for finance"],"provider":{"@type":"Organization","name":"LearneQuant","url":"__SITE_URL__"},"hasCourseInstance":{"@type":"CourseInstance","courseMode":"online","courseWorkload":"PT400H"}}</script>
+
+<noscript><style>
+  /* the splash is removed by a script that will never run */
+  #qc-boot{ display: none !important; }
+  /* the course and trainer views are built by JavaScript; the reference is
+     static markup and is the part worth showing */
+  #qc-root, #tr-root, #qc-bar{ display: none !important; }
+  #qr-root{ display: block !important; }
+  /* chrome that only a script can drive: searching, filtering, the drawer */
+  #qr-root .sb-search, #qr-root .filters, #qr-root .sb-min,
+  #qr-root .topbar .btn, #qr-root .scrim{ display: none !important; }
+</style></noscript>
 </head>
 <body ontouchstart=""><div id="qc-boot" role="status" aria-live="polite"><div class="qc-boot-in"><div class="qc-boot-mark">Q</div><div class="qc-boot-t">The Quant Curriculum</div><div class="qc-boot-s">368 lessons · opening from this file, with nothing to download</div><div class="qc-boot-bar"><i></i></div></div></div><style>#qc-boot{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#fbfaf8;color:#16181d;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;padding:calc(env(safe-area-inset-top,0px) + 24px) 24px calc(env(safe-area-inset-bottom,0px) + 24px)}@media (prefers-color-scheme:dark){#qc-boot{background:#0e1014;color:#e9e7e3}}.qc-boot-in{text-align:center;max-width:30ch}.qc-boot-mark{width:38px;height:38px;margin:0 auto 14px;border-radius:9px;background:linear-gradient(150deg,#8a5d16,#a8721f);color:#fff;font-weight:800;font-size:19px;line-height:38px}.qc-boot-t{font-size:17px;font-weight:650;letter-spacing:-.01em}.qc-boot-s{margin-top:7px;font-size:12.5px;line-height:1.5;opacity:.62}.qc-boot-bar{margin:16px auto 0;width:150px;height:3px;border-radius:2px;background:rgba(138,93,22,.18);overflow:hidden}.qc-boot-bar i{display:block;width:40%;height:100%;border-radius:2px;background:#8a5d16;animation:qcboot 1.1s ease-in-out infinite}@media (prefers-color-scheme:dark){.qc-boot-bar i{background:#d7a751}}@keyframes qcboot{0%{transform:translateX(-110%)}100%{transform:translateX(275%)}}@media (prefers-reduced-motion:reduce){.qc-boot-bar i{animation:none;width:100%}}</style><div id="qr-root">
 <!-- Glyph outlines for the typeset mathematics. They live here, ahead of
@@ -12661,6 +12673,35 @@ w = w.<span class="tok-fn">shift</span>(<span class="tok-fn">int</span>(cfg[<spa
 
 
 </div><script>(function(){function g(){var b=document.getElementById("qc-boot");if(!b)return;if(document.getElementById("qc-root")||document.getElementById("qr-root")){b.style.opacity="0";b.style.transition="opacity .18s";setTimeout(function(){b.remove();},200);}else setTimeout(g,60);}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",g);else g();setTimeout(function(){var b=document.getElementById("qc-boot");if(b)b.remove();},9000);})();</script>
+
+<script>
+/* If no view ever became visible, show the reference rather than nothing.
+   __QC_MODE__ is set by the course layer as soon as it runs, so a live app
+   is never interfered with. */
+(function () {
+  function visible() {
+    var ids = ["qc-root", "qr-root", "tr-root"], i, e;
+    for (i = 0; i < ids.length; i++) {
+      e = document.getElementById(ids[i]);
+      if (e && e.offsetParent !== null && e.getBoundingClientRect().height > 8) return true;
+    }
+    return false;
+  }
+  function rescue() {
+    if (window.__QC_MODE__ || visible()) return;   /* the app is fine */
+    /* Use the class the app itself uses, and set no inline style. If a slow
+       device finishes booting after this fires, setMode() toggles .on across
+       all three roots and quietly takes the reference back down — an inline
+       display would have survived that and left two views stacked. */
+    var r = document.getElementById("qr-root");
+    if (r) r.classList.add("on");
+    var b = document.getElementById("qc-boot");
+    if (b) b.parentNode && b.parentNode.removeChild(b);
+  }
+  setTimeout(rescue, 12000);
+  setTimeout(rescue, 20000);
+})();
+</script>
 
 <script>
 /* Service worker: makes every visit after the first one instant, and the whole
