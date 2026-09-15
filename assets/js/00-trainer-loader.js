@@ -83,9 +83,11 @@
 
   /* ---- when to fetch it, earliest wins --------------------------------- */
 
-  /* the reader touched the page at all */
-  document.addEventListener("pointerdown", load, { capture: true, once: true, passive: true });
-  document.addEventListener("keydown", load, { capture: true, once: true });
+  /* NOT on the first touch anywhere. That fired 1.6 MB of generators into the
+     parser at the exact moment the reader tapped "Start — lesson 1", on top of
+     a document that already costs ~730 MB of renderer memory in WebKit — and
+     iOS kills a tab for far less. The trainer is fetched when it is actually
+     wanted, or at idle, and nothing else. */
 
   /* the trainer view was switched on */
   function watch() {

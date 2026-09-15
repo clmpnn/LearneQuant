@@ -16,25 +16,25 @@
 @media (pointer: coarse) {
 
   /* ------------------------------------------------------------------
-     1. WIDE TABLES
+     1. CODE BLOCKS
 
-     89 of the 212 tables in the reference are wider than a 393 px screen —
-     some reach 1002 px. The page itself does not scroll sideways, so those
-     columns were not merely awkward to read, they were unreachable: the
-     text was clipped and no gesture brought it back.
+     An earlier version of this file also made every <table> its own scroll
+     container. That was a mistake built on a bad measurement: the reference
+     already wraps all 212 tables in a .tw element that scrolls, and
+     33-lessons.js measures each one and gives it tabindex, role="region", an
+     aria-label, a "scroll →" hint, edge shadows and a pinned first column.
+     Making the table scroll itself meant the wrapper never overflowed, so
+     that entire mechanism switched off: 116 wrappers went from all of the
+     above to none of it. Measured both ways; nothing was ever unreachable.
 
-     Making the table its own scroll container fixes that without a wrapper
-     element, which matters because wrapping 212 tables in JavaScript would
-     undo the content-visibility work by forcing all of them into layout.
-     `display: block` keeps the rows rendering as table rows — they generate
-     an anonymous table box inside — while letting the element scroll.
+     Code blocks are the real gap — the reference has no rule for <pre> at
+     all, and 84 of the 186 have content wider than their box with no way to
+     reach it. The display maths is already handled upstream.
      ------------------------------------------------------------------ */
-  #qr-root table,
-  #tr-root table {
-    display: block;
+  #qr-root pre {
+    max-width: 100%;
     overflow-x: auto;
-    overscroll-behavior-x: contain;   /* swiping a table must not page back */
-    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
   }
 
   /* ------------------------------------------------------------------
@@ -179,52 +179,6 @@
     overscroll-behavior-x: contain;
     -webkit-overflow-scrolling: touch;
   }
-}
-
-/* ==========================================================================
-   SIDEWAYS-SCROLLING REGIONS
-
-   assets/js/05-scroll-a11y.js marks a region .qc-scrollx once it is actually
-   wider than its box, and .qc-scrollx-end once the reader has scrolled to the
-   far side. This draws the cue.
-
-   An inset shadow is used rather than a background gradient because an inset
-   shadow paints against the padding box, which does not move when the content
-   scrolls — so the hint stays pinned to the edge. Checked first that it will
-   be visible: none of the 400 table rows and cells sampled carries a
-   background colour of its own that would paint over it.
-
-   This is not inside the (pointer: coarse) block. A narrow desktop window
-   clips these regions exactly the same way, and the keyboard access the
-   script adds matters most where there is a keyboard.
-   ========================================================================== */
-.qc-scrollx {
-  /* The theme sets only this colour. An earlier version re-declared the whole
-     box-shadow per theme, and `:root:not([data-theme="light"]) .qc-scrollx`
-     (0,3,0) outranked `.qc-scrollx.qc-scrollx-end` (0,2,0) — so in dark mode
-     the cue never cleared when you reached the end. One shadow declaration,
-     one override, no cascade to lose. */
-  --qc-edge: rgba(20, 18, 14, .22);
-  box-shadow: inset -14px 0 12px -12px var(--qc-edge);
-  transition: box-shadow .18s ease;
-  scroll-behavior: smooth;
-}
-.qc-scrollx.qc-scrollx-end { box-shadow: none; }
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .qc-scrollx { --qc-edge: rgba(0, 0, 0, .55); }
-}
-:root[data-theme="dark"] .qc-scrollx { --qc-edge: rgba(0, 0, 0, .55); }
-
-/* A focusable region needs a visible focus ring, and the document's own
-   :focus-visible styling does not reach these because they are not controls. */
-.qc-scrollx:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .qc-scrollx { transition: none; scroll-behavior: auto; }
 }
 
 /* ==========================================================================

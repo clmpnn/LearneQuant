@@ -1799,25 +1799,25 @@ body{
 @media (pointer: coarse) {
 
   /* ------------------------------------------------------------------
-     1. WIDE TABLES
+     1. CODE BLOCKS
 
-     89 of the 212 tables in the reference are wider than a 393 px screen —
-     some reach 1002 px. The page itself does not scroll sideways, so those
-     columns were not merely awkward to read, they were unreachable: the
-     text was clipped and no gesture brought it back.
+     An earlier version of this file also made every <table> its own scroll
+     container. That was a mistake built on a bad measurement: the reference
+     already wraps all 212 tables in a .tw element that scrolls, and
+     33-lessons.js measures each one and gives it tabindex, role="region", an
+     aria-label, a "scroll →" hint, edge shadows and a pinned first column.
+     Making the table scroll itself meant the wrapper never overflowed, so
+     that entire mechanism switched off: 116 wrappers went from all of the
+     above to none of it. Measured both ways; nothing was ever unreachable.
 
-     Making the table its own scroll container fixes that without a wrapper
-     element, which matters because wrapping 212 tables in JavaScript would
-     undo the content-visibility work by forcing all of them into layout.
-     `display: block` keeps the rows rendering as table rows — they generate
-     an anonymous table box inside — while letting the element scroll.
+     Code blocks are the real gap — the reference has no rule for <pre> at
+     all, and 84 of the 186 have content wider than their box with no way to
+     reach it. The display maths is already handled upstream.
      ------------------------------------------------------------------ */
-  #qr-root table,
-  #tr-root table {
-    display: block;
+  #qr-root pre {
+    max-width: 100%;
     overflow-x: auto;
-    overscroll-behavior-x: contain;   /* swiping a table must not page back */
-    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
   }
 
   /* ------------------------------------------------------------------
@@ -1965,52 +1965,6 @@ body{
 }
 
 /* ==========================================================================
-   SIDEWAYS-SCROLLING REGIONS
-
-   assets/js/05-scroll-a11y.js marks a region .qc-scrollx once it is actually
-   wider than its box, and .qc-scrollx-end once the reader has scrolled to the
-   far side. This draws the cue.
-
-   An inset shadow is used rather than a background gradient because an inset
-   shadow paints against the padding box, which does not move when the content
-   scrolls — so the hint stays pinned to the edge. Checked first that it will
-   be visible: none of the 400 table rows and cells sampled carries a
-   background colour of its own that would paint over it.
-
-   This is not inside the (pointer: coarse) block. A narrow desktop window
-   clips these regions exactly the same way, and the keyboard access the
-   script adds matters most where there is a keyboard.
-   ========================================================================== */
-.qc-scrollx {
-  /* The theme sets only this colour. An earlier version re-declared the whole
-     box-shadow per theme, and `:root:not([data-theme="light"]) .qc-scrollx`
-     (0,3,0) outranked `.qc-scrollx.qc-scrollx-end` (0,2,0) — so in dark mode
-     the cue never cleared when you reached the end. One shadow declaration,
-     one override, no cascade to lose. */
-  --qc-edge: rgba(20, 18, 14, .22);
-  box-shadow: inset -14px 0 12px -12px var(--qc-edge);
-  transition: box-shadow .18s ease;
-  scroll-behavior: smooth;
-}
-.qc-scrollx.qc-scrollx-end { box-shadow: none; }
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .qc-scrollx { --qc-edge: rgba(0, 0, 0, .55); }
-}
-:root[data-theme="dark"] .qc-scrollx { --qc-edge: rgba(0, 0, 0, .55); }
-
-/* A focusable region needs a visible focus ring, and the document's own
-   :focus-visible styling does not reach these because they are not controls. */
-.qc-scrollx:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .qc-scrollx { transition: none; scroll-behavior: auto; }
-}
-
-/* ==========================================================================
    VERY NARROW SCREENS
 
    Below 360 px — an iPhone SE, or any phone with the display zoom turned up
@@ -2054,7 +2008,6 @@ body{
 })();
 </script>
 <script defer src="assets/js/00-trainer-loader.js"></script>
-<script defer src="assets/js/05-scroll-a11y.js"></script>
 <script defer src="assets/js/10-dialog.js"></script>
 <script defer src="assets/js/20-search-index.js"></script>
 <script defer src="assets/js/21-reference.js"></script>
@@ -2066,7 +2019,7 @@ body{
 <script defer src="assets/js/33-lessons.js"></script>
 <script defer src="assets/js/40-interface.js"></script>
 
-<link rel="canonical" href="__SITE_URL__">
+<link rel="canonical" href="https://clmpnn.github.io/LearneQuant/">
 <link rel="license" href="https://creativecommons.org/licenses/by/4.0/">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
@@ -2078,8 +2031,8 @@ body{
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="The Quant Curriculum">
 <meta property="og:title" content="The Quant Curriculum">
-<meta property="og:url" content="__SITE_URL__">
-<meta property="og:image" content="__SITE_URL__assets/img/og.png">
+<meta property="og:url" content="https://clmpnn.github.io/LearneQuant/">
+<meta property="og:image" content="https://clmpnn.github.io/LearneQuant/assets/img/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="The Quant Curriculum — 368 lessons across 53 stages">
@@ -2087,8 +2040,8 @@ body{
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The Quant Curriculum">
 <meta name="twitter:description" content="368 ordered lessons across 53 stages, a complete reference, and a practice engine of over a thousand generated problems.">
-<meta name="twitter:image" content="__SITE_URL__assets/img/og.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Course","name":"The Quant Curriculum","url":"__SITE_URL__","description":"368 ordered lessons across 53 stages, each with an objective, retrieval cards and an objective check, drawing on a complete reference and a practice engine of over a thousand generated problems.","inLanguage":"en","isAccessibleForFree":true,"license":"https://creativecommons.org/licenses/by/4.0/","copyrightYear":2026,"learningResourceType":["Course","Reference","Practice problems"],"teaches":["Quantitative trading","Derivatives pricing","Portfolio construction","Market microstructure","Statistical inference","Machine learning for finance"],"provider":{"@type":"Organization","name":"LearneQuant","url":"__SITE_URL__"},"hasCourseInstance":{"@type":"CourseInstance","courseMode":"online","courseWorkload":"PT400H"}}</script>
+<meta name="twitter:image" content="https://clmpnn.github.io/LearneQuant/assets/img/og.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Course","name":"The Quant Curriculum","url":"https://clmpnn.github.io/LearneQuant/","description":"368 ordered lessons across 53 stages, each with an objective, retrieval cards and an objective check, drawing on a complete reference and a practice engine of over a thousand generated problems.","inLanguage":"en","isAccessibleForFree":true,"license":"https://creativecommons.org/licenses/by/4.0/","copyrightYear":2026,"learningResourceType":["Course","Reference","Practice problems"],"teaches":["Quantitative trading","Derivatives pricing","Portfolio construction","Market microstructure","Statistical inference","Machine learning for finance"],"provider":{"@type":"Organization","name":"LearneQuant","url":"https://clmpnn.github.io/LearneQuant/"},"hasCourseInstance":{"@type":"CourseInstance","courseMode":"online","courseWorkload":"PT400H"}}</script>
 
 <noscript><style>
   /* the splash is removed by a script that will never run */
@@ -2101,6 +2054,44 @@ body{
   #qr-root .sb-search, #qr-root .filters, #qr-root .sb-min,
   #qr-root .topbar .btn, #qr-root .scrim{ display: none !important; }
 </style></noscript>
+
+<script>
+(function () {
+  var K = "qc.loading", S = "qc.loadfails";
+  var ls; try { ls = window.localStorage; } catch (e) { return; }
+  function get(k) { try { return ls.getItem(k); } catch (e) { return null; } }
+  function set(k, v) { try { ls.setItem(k, v); } catch (e) {} }
+  function del(k) { try { ls.removeItem(k); } catch (e) {} }
+
+  if (get(K)) {
+    var n = (parseInt(get(S), 10) || 0) + 1;
+    set(S, String(n));
+    if (n >= 2) {
+      /* Put the reader back on the map rather than into whatever was being
+         rendered when it died. Progress, cards and trainer history are
+         untouched — only the current screen is reset. */
+      try {
+        var keys = ["qc.path.v2", "qc.path.v1"], i, raw, o;
+        for (i = 0; i < keys.length; i++) {
+          raw = ls.getItem(keys[i]);
+          if (!raw) continue;
+          o = JSON.parse(raw);
+          if (o && typeof o === "object") {
+            o.screen = "map"; o.run = null; o.mode = "path";
+            ls.setItem(keys[i], JSON.stringify(o));
+          }
+        }
+      } catch (e) {}
+      set(S, "0");
+    }
+  }
+  set(K, "1");
+
+  function settled() { del(K); set(S, "0"); }
+  if (document.readyState === "complete") setTimeout(settled, 2500);
+  else addEventListener("load", function () { setTimeout(settled, 2500); });
+})();
+</script>
 </head>
 <body ontouchstart=""><div id="qc-boot" role="status" aria-live="polite"><div class="qc-boot-in"><div class="qc-boot-mark">Q</div><div class="qc-boot-t">The Quant Curriculum</div><div class="qc-boot-s">368 lessons · opening from this file, with nothing to download</div><div class="qc-boot-bar"><i></i></div></div></div><style>#qc-boot{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#fbfaf8;color:#16181d;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;padding:calc(env(safe-area-inset-top,0px) + 24px) 24px calc(env(safe-area-inset-bottom,0px) + 24px)}@media (prefers-color-scheme:dark){#qc-boot{background:#0e1014;color:#e9e7e3}}.qc-boot-in{text-align:center;max-width:30ch}.qc-boot-mark{width:38px;height:38px;margin:0 auto 14px;border-radius:9px;background:linear-gradient(150deg,#8a5d16,#a8721f);color:#fff;font-weight:800;font-size:19px;line-height:38px}.qc-boot-t{font-size:17px;font-weight:650;letter-spacing:-.01em}.qc-boot-s{margin-top:7px;font-size:12.5px;line-height:1.5;opacity:.62}.qc-boot-bar{margin:16px auto 0;width:150px;height:3px;border-radius:2px;background:rgba(138,93,22,.18);overflow:hidden}.qc-boot-bar i{display:block;width:40%;height:100%;border-radius:2px;background:#8a5d16;animation:qcboot 1.1s ease-in-out infinite}@media (prefers-color-scheme:dark){.qc-boot-bar i{background:#d7a751}}@keyframes qcboot{0%{transform:translateX(-110%)}100%{transform:translateX(275%)}}@media (prefers-reduced-motion:reduce){.qc-boot-bar i{animation:none;width:100%}}</style><div id="qr-root">
 <!-- Glyph outlines for the typeset mathematics. They live here, ahead of

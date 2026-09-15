@@ -264,6 +264,58 @@ how it stays out of a healthy page's way.
 
 ---
 
+## The iOS crash, and what actually costs memory
+
+Safari on an iPhone 14 Pro reported *"A problem repeatedly occurred"* after
+tapping **Start — lesson 1**. That message means the WebContent process was
+killed, reloaded, and killed again.
+
+Measured in WebKitGTK 2.52 — the same engine — by reading the WebProcess RSS
+from outside the browser:
+
+| build | after load | showing the reference |
+|---|---:|---:|
+| the original single-file document | 500 MB | **732 MB** |
+| this repository, at the time of the crash | 515 MB | 739 MB |
+| this repository now | 502 MB | **729 MB** |
+
+The cost is the document itself and predates any of the work here. Of its
+102,000 elements, **54% are typeset mathematics**: 2,830 `<svg>`, 24,544 `<g>`
+and **23,308 `<use>`**, and WebKit instantiates a shadow tree for every `<use>`.
+`content-visibility` is doing its job — turning it off costs another 80 MB —
+but it cannot reduce the node count, only the layout work.
+
+Two things were changed in response, neither of which is a cure:
+
+**The practice engine no longer loads on the first touch.** It used to be
+fetched on the first `pointerdown` anywhere, which fired 1.6 MB of generators
+into the parser at the exact moment the reader tapped Start. It now loads when
+the trainer is actually opened, or at idle.
+
+**A crash no longer makes the site unopenable.** The app saves its current
+screen, so a crash while reading a lesson was restored on reload and crashed
+again — which is what turns one failure into "repeatedly occurred". A guard in
+the head marks a load as in flight and clears the mark once the page settles;
+finding the mark still set twice in a row means two loads died, and the saved
+screen is put back to the map. Progress, cards and trainer history are never
+touched. One crash is tolerated, because one crash can have any cause.
+
+### The durable fix
+
+Neither of those reduces the 729 MB. Getting a comfortable margin on a phone
+means shrinking the document, and there are only really three ways:
+
+1. **Split the reference into a page per volume.** The largest win by far, and
+   the largest change: in-document search and the 24,673 in-page links would
+   need rethinking.
+2. **Load the mathematics on demand.** The maths is 54% of the DOM; rendering
+   it per section as the reader arrives would cut the resident node count
+   enormously without touching the prose.
+3. **Replace `<use>` with plain paths in the common glyphs.** Fewer shadow
+   trees at the cost of a larger file — worth measuring before committing to.
+
+---
+
 ## Browser support
 
 Tested in two engines: Chromium 141, and WebKitGTK 2.52 — the same WebCore and
